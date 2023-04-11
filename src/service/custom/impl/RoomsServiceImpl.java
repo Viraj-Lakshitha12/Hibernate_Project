@@ -32,8 +32,11 @@ public class RoomsServiceImpl implements RoomsService {
 
     @Override
     public RoomsDTO searchRooms(String id) throws SQLException, ClassNotFoundException {
-        Rooms byPk = roomsDAO.findByPk(id);
-        return convertor.fromRooms(byPk);
+        Rooms rooms = roomsDAO.findByPk(id);
+        if (rooms!=null) {
+            return convertor.fromRooms(rooms);
+        }
+        return null;
     }
 
     @Override

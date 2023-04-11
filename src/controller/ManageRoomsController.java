@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
@@ -44,7 +45,14 @@ public class ManageRoomsController {
         int qty = Integer.parseInt(txtQty.getText());
 
         try {
-            roomsService.saveRooms(new RoomsDTO(room_id,room_type,key_money,qty));
+            boolean b = roomsService.saveRooms(new RoomsDTO(room_id, room_type, key_money, qty));
+            if (b){
+                new Alert(Alert.AlertType.CONFIRMATION, "Successfully Added !").show();
+            }else{
+                new Alert(Alert.AlertType.CONFIRMATION, "Added  Fail!").show();
+
+            }
+
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -56,8 +64,13 @@ public class ManageRoomsController {
 
         try {
             RoomsDTO roomsDTO = roomsService.searchRooms(room_id);
-            txtRoomType.setText(roomsDTO.getRoomType());
-
+            if (roomsDTO!=null) {
+                txtRoomType.setText(roomsDTO.getRoomType());
+                txtKeyMoney.setText(String.valueOf(roomsDTO.getKey_money()));
+                txtQty.setText(String.valueOf(roomsDTO.getQty()));
+            }else {
+                new Alert(Alert.AlertType.ERROR, "Not Found Room!..Try Again").show();
+            }
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -70,15 +83,34 @@ public class ManageRoomsController {
         int qty = Integer.parseInt(txtQty.getText());
 
         try {
-            roomsService.updateRooms(new RoomsDTO(room_id,room_type,key_money,qty));
+            boolean b = roomsService.updateRooms(new RoomsDTO(room_id, room_type, key_money, qty));
+            if (b){
+                new Alert(Alert.AlertType.CONFIRMATION, "Successfully Update !").show();
+            }else{
+                new Alert(Alert.AlertType.CONFIRMATION, "update  Fail!").show();
+
+            }
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
+        String room_id = txtRoomId.getText();
+        try {
+            boolean b = roomsService.deleteRooms(room_id);
+            if (b){
+                new Alert(Alert.AlertType.CONFIRMATION, "Successfully Delete !").show();
+            }else{
+                new Alert(Alert.AlertType.CONFIRMATION, "Delete  Fail!").show();
+
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void txtSearchRooms(ActionEvent actionEvent) {
+        btnSearchOnAction(actionEvent);
     }
 }
