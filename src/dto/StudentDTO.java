@@ -4,14 +4,14 @@ public class StudentDTO {
     String id;
     String name;
     String address;
-    int contact_Number;
+    String contact_Number;
     String date_of_birthday;
     String gender;
 
     public StudentDTO() {
     }
 
-    public StudentDTO(String id, String name, String address, int contact_Number, String date_of_birthday, String gender) {
+    public StudentDTO(String id, String name, String address, String contact_Number, String date_of_birthday, String gender) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -44,11 +44,11 @@ public class StudentDTO {
         this.address = address;
     }
 
-    public int getContact_Number() {
+    public String getContact_Number() {
         return contact_Number;
     }
 
-    public void setContact_Number(int contact_Number) {
+    public void setContact_Number(String contact_Number) {
         this.contact_Number = contact_Number;
     }
 

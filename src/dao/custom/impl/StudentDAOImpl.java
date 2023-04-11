@@ -71,7 +71,11 @@ public class StudentDAOImpl implements StudentDAO {
         } finally {
             session.close();
         }
-        return student;
+        if (student==null) {
+            return null;
+        }else {
+            return student;
+        }
     }
 
     @Override
