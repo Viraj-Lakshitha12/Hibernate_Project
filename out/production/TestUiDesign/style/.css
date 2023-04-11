@@ -1,0 +1,151 @@
+.mainForm{
+ -fx-background-color: #c0baba;
+}
+.mainPanel{
+    -fx-background-color:  linear-gradient(#000942 , #4c5c88);
+   // -background-image: radial-gradient(red 5%, yellow 15%, green 60%);
+    -fx-border-color: black;
+    -fx-background-radius: 0 80 80 0;
+    -fx-border-radius: 0 80 80 0;
+}
+
+.secondPane{
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+}
+
+.DashboardWord{
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
+.seconds{
+    background-color: #ef0000;
+    opacity: .4;
+}
+.labelOnMouse{
+
+}
+
+.Dname {
+    -fx-border-color: black;
+    -fx-border-width: 5px;
+    -fx-border-radius: 30;
+
+}
+
+.availableRooms{
+    -fx-background-radius: 25px;
+    -fx-background-color:  linear-gradient(#0618a6, #7f8cbe);
+    -fx-font-weight: bold;
+}
+
+.bookedRoomDashBoard{
+    -fx-background-radius: 25px;
+    -fx-background-color:  linear-gradient(#0618a6, #7f8cbe);
+    -fx-font-weight: bold;
+}
+
+.TotalRoomDashBoard{
+    -fx-background-radius: 25px;
+    -fx-background-color:  linear-gradient(#0618a6, #7f8cbe);
+    -fx-font-weight: bold;
+}
+
+.student_Registration_label{
+    -fx-underline: true;
+    -fx-border-color: black;
+    -fx-border-radius: 30;
+    -fx-padding: 10px;
+
+}
+
+.student_Registration_Menu{
+    -fx-border-radius: 20px;
+    -fx-background-color: #918d8d;
+}
+
+.backButton{
+    -fx-background-color: #18b5ff;
+    -fx-background-radius: 15px;
+    -fx-font-weight: bolder;
+
+}
+
+.backButton:hover{
+    -fx-background-color: yellow;
+}
+
+.pane{
+    -fx-background-color: white;
+}
+
+.CrudButton {
+    -fx-background-color: #b2b2b2;
+    -fx-border-radius: 15px;
+    -fx-font-weight: bold;
+    -fx-font-size: 25px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+}
+
+.CrudButton:hover{
+    -fx-background-color: linear-gradient(to right, #041118 2%, #ffca00);
+}
+
+
+
+.table-view .column-header-background{
+    -fx-background-color: linear-gradient(#565656 0%, #8f8d8d 100%);
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-font-weight: bold;
+    -fx-font-size: 25px;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+}
+
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, #616161;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #424242;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #005797;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+
+.table-view > .virtual-flow > .scroll-bar:vertical,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track-background,
+.table-view > .virtual-flow > .scroll-bar:horizontal,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track-background {
+    -fx-background-color: transparent;
+}
+
+
+
+.table-view > .virtual-flow > .scroll-bar > .increment-button,
+.table-view > .virtual-flow > .scroll-bar > .decrement-button {
+    -fx-opacity: 0;
+}

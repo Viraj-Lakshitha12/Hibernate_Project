@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="985.0" prefWidth="1890.0" styleClass="mainForm" stylesheets="@../style/.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashBoardController">
+   <children>
+      <AnchorPane layoutX="213.0" layoutY="143.0" prefHeight="822.0" prefWidth="1660.0" styleClass="secondPane" stylesheets="@../style/.css">
+         <children>
+            <Pane layoutX="-189.0" layoutY="-52.0" prefHeight="848.0" prefWidth="132.0" style="-fx-background-radius: 20;" />
+            <Label fx:id="lbl1" layoutX="129.0" layoutY="706.0" prefHeight="21.0" prefWidth="220.0" styleClass="labelOnMouse" stylesheets="@../style/.css">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <textFill>
+                  <RadialGradient centerX="0.5" centerY="0.46601941747572817" radius="0.5">
+                     <stops>
+                        <Stop color="RED" />
+                        <Stop color="#653030" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </textFill>
+            </Label>
+            <Separator layoutX="115.0" layoutY="668.0" prefHeight="3.0" prefWidth="1482.0" style="-fx-border-color: black;" />
+            <JFXButton layoutX="1470.0" layoutY="735.0" prefHeight="51.0" prefWidth="174.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black;" text="Contact">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="125.0" layoutY="740.0" prefHeight="43.0" prefWidth="822.0" text="Welcome to  Hostel Management System">
+               <font>
+                  <Font name="System Bold" size="35.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="1220.0" layoutY="734.0" prefHeight="51.0" prefWidth="182.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black;" text="About US">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+            <HBox layoutX="38.0" layoutY="56.0" prefHeight="211.0" prefWidth="446.0" styleClass="availableRooms" stylesheets="@../style/.css">
+               <children>
+                  <ImageView fitHeight="110.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="20.0" right="60.0" top="55.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../assests/room.png" />
+                     </image>
+                  </ImageView>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="207.0" stylesheets="@../../../../GDSE61/final%20project/finalProject/src/lk/ijse/phone/style/style.css" text="Available Rooms" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="-30.0" />
+                     </HBox.margin>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#fdfeff" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+                  <Label fx:id="lblTodayOrders" prefHeight="35.0" prefWidth="66.0" text="0">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="-50.0" right="-30.0" top="120.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox layoutX="606.0" layoutY="59.0" prefHeight="211.0" prefWidth="446.0" styleClass="bookedRoomDashBoard" stylesheets="@../style/.css">
+               <children>
+                  <ImageView fitHeight="110.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="20.0" right="60.0" top="55.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../assests/overbooked%20(1).png" />
+                     </image>
+                  </ImageView>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="207.0" stylesheets="@../../../../GDSE61/final%20project/finalProject/src/lk/ijse/phone/style/style.css" text="Booked Rooms" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="-30.0" />
+                     </HBox.margin>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#fdfeff" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+                  <Label fx:id="lblTodayOrders1" prefHeight="35.0" prefWidth="66.0" text="0">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="-50.0" right="-30.0" top="120.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox layoutX="1165.0" layoutY="61.0" prefHeight="211.0" prefWidth="446.0" styleClass="TotalRoomDashBoard" stylesheets="@../style/.css">
+               <children>
+                  <ImageView fitHeight="110.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="30.0" right="60.0" top="55.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../assests/hotel.png" />
+                     </image>
+                  </ImageView>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="207.0" stylesheets="@../../../../GDSE61/final%20project/finalProject/src/lk/ijse/phone/style/style.css" text="Total  Rooms" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#fdfeff" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+                  <Label fx:id="lblTodayOrders11" prefHeight="35.0" prefWidth="66.0" text="0">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="-80.0" right="-30.0" top="120.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+            
+                     </children>
+      </AnchorPane>
+      <Label layoutX="996.0" layoutY="26.0" styleClass="DashboardWord" stylesheets="@../style/.css" text="DASHBOARD" textFill="#6b6b6b">
+         <font>
+            <Font name="System Bold" size="70.0" />
+         </font>
+      </Label>
+      <Pane layoutX="1597.0" layoutY="22.0" prefHeight="94.0" prefWidth="274.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-radius: 10;">
+         <children>
+            <Label fx:id="lblDate" layoutX="32.0" layoutY="43.0" prefHeight="41.0" prefWidth="245.0">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTime" layoutX="40.0" layoutY="-8.0" prefHeight="81.0" prefWidth="239.0">
+               <font>
+                  <Font name="System Bold" size="45.0" />
+               </font></Label>
+            <Label fx:id="lblDatee" layoutX="105.0" layoutY="59.0" prefHeight="21.0" prefWidth="174.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label id="Dname" layoutX="360.0" layoutY="6.0" prefHeight="126.0" prefWidth="80.0" stylesheets="@../style/.css" text="D">
+         <font>
+            <Font name="System Bold" size="84.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.5056818181818181" centerY="0.37864077669902907" radius="0.5">
+               <stops>
+                  <Stop color="#ff1e00" />
+                  <Stop color="#a40303" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="423.0" layoutY="57.0" prefHeight="53.0" prefWidth="199.0" stylesheets="@../style/.css" text="24 Hostel">
+         <font>
+            <Font name="System Bold Italic" size="36.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.5056818181818181" centerY="0.37864077669902907" radius="0.5">
+               <stops>
+                  <Stop color="#ff1e00" />
+                  <Stop color="#a40303" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="340.0" layoutY="14.0" prefHeight="115.0" prefWidth="258.0" styleClass="Dname" stylesheets="@../style/.css" />
+      <Pane layoutX="13.0" layoutY="31.0" prefHeight="927.0" prefWidth="183.0" styleClass="mainPanel" stylesheets="@../style/.css">
+         <children>
+            <Label id="labelOnMouse" fx:id="lbl11" layoutX="-371.0" layoutY="825.0" prefHeight="21.0" prefWidth="220.0" stylesheets="@../style/.css">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imgEmployee" fitHeight="150.0" fitWidth="100.0" layoutX="40.0" layoutY="71.0" onMouseClicked="#UsersNavigation" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: 20;" styleClass="img1">
+               <image>
+                  <Image url="@../assests/images.jpeg" />
+               </image>
+            </ImageView>
+            <Label layoutX="62.0" layoutY="179.0" text="USERS" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imgRooms" fitHeight="150.0" fitWidth="100.0" layoutX="39.0" layoutY="226.0" onMouseClicked="#ManageRooms" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/images%20(2).png" />
+               </image>
+            </ImageView>
+            <Label layoutX="56.0" layoutY="337.0" text="ROOMS" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imgStudents" fitHeight="150.0" fitWidth="100.0" layoutX="39.0" layoutY="381.0" onMouseClicked="#StudentRegistration" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/201818.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="50.0" layoutY="493.0" text="Students" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imgLogOut" fitHeight="53.0" fitWidth="117.0" layoutX="29.0" layoutY="838.0" onMouseClicked="#Logout" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/images%20(4).jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgReservation" fitHeight="150.0" fitWidth="100.0" layoutX="51.0" layoutY="536.0" onMouseClicked="#ReservationOnClicked" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/booking.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="39.0" layoutY="653.0" text="Reservation" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
