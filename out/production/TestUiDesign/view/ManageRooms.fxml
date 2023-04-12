@@ -78,7 +78,7 @@
             <TableColumn fx:id="colRoomId" prefWidth="388.0" text="Room ID" />
             <TableColumn fx:id="colRoomType" prefWidth="493.0" text="Room Type" />
             <TableColumn fx:id="colKeyMoney" prefWidth="447.0" text="Key Money" />
-            <TableColumn fx:id="ColAvailableQty" prefWidth="274.0" text="Available Qty" />
+            <TableColumn fx:id="colQty" prefWidth="274.0" text="Available Qty" />
          </columns>
       </TableView>
       <ImageView fitHeight="41.0" fitWidth="53.0" layoutX="569.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
@@ -93,12 +93,12 @@
       </ImageView>
       <ImageView fitHeight="41.0" fitWidth="50.0" layoutX="1300.0" layoutY="356.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assests/delete_icon.png" />
+            <Image url="@../assests/delete.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="41.0" fitWidth="50.0" layoutX="1637.0" layoutY="355.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assests/person_search_FILL0_wght400_GRAD0_opsz48.png" />
+            <Image url="@../assests/research.png" />
          </image>
       </ImageView>
    </children>

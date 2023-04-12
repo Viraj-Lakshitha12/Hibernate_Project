@@ -4,10 +4,12 @@ import dao.custom.RoomsDAO;
 import entity.Rooms;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import util.FactoryConfiguration;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RoomsDAOImpl implements RoomsDAO {
     @Override
@@ -47,7 +49,8 @@ public class RoomsDAOImpl implements RoomsDAO {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.delete(pk);
+            Rooms rooms = session.get(Rooms.class, pk);
+            session.delete(rooms);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -77,6 +80,21 @@ public class RoomsDAOImpl implements RoomsDAO {
 
     @Override
     public ArrayList<Rooms> getAll() throws SQLException, ClassNotFoundException {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        try {
+            String s="FROM Rooms";
+            Query query = session.createQuery(s);
+            List<Rooms> list = query.list();
+
+            transaction.commit();
+            return new ArrayList<>(list);
+        } catch (Exception e) {
+            transaction.rollback();
+        } finally {
+            session.close();
+        }
         return null;
     }
 }

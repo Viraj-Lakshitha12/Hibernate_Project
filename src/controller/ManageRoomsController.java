@@ -2,6 +2,8 @@ package controller;
 
 import com.jfoenix.controls.JFXTextField;
 import dto.RoomsDTO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import service.custom.RoomsService;
@@ -19,6 +22,7 @@ import util.Routes;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ManageRoomsController {
     public AnchorPane pane;
@@ -33,6 +37,30 @@ public class ManageRoomsController {
     public TableColumn ColAvailableQty;
 
     private final RoomsService roomsService=new RoomsServiceImpl();
+    private final ObservableList observableList = FXCollections.observableArrayList();
+    public TableColumn colQty;
+
+    public void initialize(){
+        loadAllRoomDetails();
+    }
+
+    private void loadAllRoomDetails() {
+        colRoomId.setCellValueFactory(new PropertyValueFactory("roomId"));
+        colRoomType.setCellValueFactory(new PropertyValueFactory("room_type"));
+        colKeyMoney.setCellValueFactory(new PropertyValueFactory("key_money"));
+        colQty.setCellValueFactory(new PropertyValueFactory("qty"));
+
+        try {
+            ArrayList<RoomsDTO> allRooms = roomsService.getAllRooms();
+            for (RoomsDTO c:allRooms) {
+                observableList.add(c);
+                tblView.setItems(observableList);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
     public void btnBackOnAction(ActionEvent actionEvent) throws IOException {
         Navigation.navigate(Routes.MAIN_FORM,pane);

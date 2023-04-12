@@ -1,23 +1,17 @@
-package entity;
+package dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
-public class Reservation {
-    @Id
+public class ReservationDTO {
     String reservation_id;
     String date;
     String student_id;
     String room_type;
     String status;
 
-    public Reservation() {
+
+    public ReservationDTO() {
     }
 
-    public Reservation(String reservation_id, String date, String student_id, String room_type, String status) {
+    public ReservationDTO(String reservation_id, String date, String student_id, String room_type, String status) {
         this.reservation_id = reservation_id;
         this.date = date;
         this.student_id = student_id;
@@ -65,14 +59,4 @@ public class Reservation {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "Reservation{" +
-                "reservation_id='" + reservation_id + '\'' +
-                ", date='" + date + '\'' +
-                ", student_id='" + student_id + '\'' +
-                ", room_type='" + room_type + '\'' +
-                ", status='" + status + '\'' +
-                '}';
-    }
 }

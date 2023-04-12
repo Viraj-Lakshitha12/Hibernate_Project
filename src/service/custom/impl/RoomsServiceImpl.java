@@ -41,6 +41,6 @@ public class RoomsServiceImpl implements RoomsService {
 
     @Override
     public ArrayList<RoomsDTO> getAllRooms() throws SQLException, ClassNotFoundException {
-        return (ArrayList<RoomsDTO>) roomsDAO.getAll().stream().map(customer -> convertor.fromRooms(customer)).collect(Collectors.toList());
+        return (ArrayList<RoomsDTO>) roomsDAO.getAll().stream().map(rooms -> convertor.fromRooms(rooms)).collect(Collectors.toList());
     }
 }

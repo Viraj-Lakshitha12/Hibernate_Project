@@ -225,32 +225,32 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <ImageView fx:id="imgEmployee" fitHeight="150.0" fitWidth="100.0" layoutX="40.0" layoutY="71.0" onMouseClicked="#UsersNavigation" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: 20;" styleClass="img1">
+            <ImageView fx:id="imgEmployee" fitHeight="150.0" fitWidth="100.0" layoutX="40.0" layoutY="106.0" onMouseClicked="#UsersNavigation" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: 20;" styleClass="img1">
                <image>
                   <Image url="@../assests/images.jpeg" />
                </image>
             </ImageView>
-            <Label layoutX="62.0" layoutY="179.0" text="USERS" textFill="WHITE">
+            <Label layoutX="62.0" layoutY="214.0" text="USERS" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <ImageView fx:id="imgRooms" fitHeight="150.0" fitWidth="100.0" layoutX="39.0" layoutY="226.0" onMouseClicked="#ManageRooms" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgRooms" fitHeight="150.0" fitWidth="100.0" layoutX="39.0" layoutY="291.0" onMouseClicked="#ManageRooms" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assests/images%20(2).png" />
                </image>
             </ImageView>
-            <Label layoutX="56.0" layoutY="337.0" text="ROOMS" textFill="WHITE">
+            <Label layoutX="56.0" layoutY="402.0" text="ROOMS" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <ImageView fx:id="imgStudents" fitHeight="150.0" fitWidth="100.0" layoutX="39.0" layoutY="381.0" onMouseClicked="#StudentRegistration" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgStudents" fitHeight="150.0" fitWidth="100.0" layoutX="39.0" layoutY="469.0" onMouseClicked="#StudentRegistration" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assests/201818.png" />
                </image>
             </ImageView>
-            <Label layoutX="50.0" layoutY="493.0" text="Students" textFill="WHITE">
+            <Label layoutX="50.0" layoutY="581.0" text="Students" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
@@ -260,12 +260,12 @@
                   <Image url="@../assests/images%20(4).jpeg" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgReservation" fitHeight="150.0" fitWidth="100.0" layoutX="51.0" layoutY="536.0" onMouseClicked="#ReservationOnClicked" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgReservation" fitHeight="150.0" fitWidth="100.0" layoutX="51.0" layoutY="643.0" onMouseClicked="#ReservationOnClicked" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assests/booking.png" />
                </image>
             </ImageView>
-            <Label layoutX="39.0" layoutY="653.0" text="Reservation" textFill="WHITE">
+            <Label layoutX="39.0" layoutY="760.0" text="Reservation" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>

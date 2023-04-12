@@ -99,5 +99,15 @@
             <Image url="@../assests/update_user.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="41.0" fitWidth="53.0" layoutX="1606.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/research.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="41.0" fitWidth="53.0" layoutX="1603.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/delete.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

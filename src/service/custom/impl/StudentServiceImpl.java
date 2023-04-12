@@ -2,12 +2,15 @@ package service.custom.impl;
 
 import dao.custom.StudentDAO;
 import dao.custom.impl.StudentDAOImpl;
+import dto.RoomsDTO;
 import dto.StudentDTO;
 import entity.Student;
 import service.custom.StudentService;
 import service.custom.util.Convertor;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class StudentServiceImpl implements StudentService {
 
@@ -36,5 +39,10 @@ public class StudentServiceImpl implements StudentService {
              studentDTO = convertor.fromStudent(student);
         }
         return studentDTO;
+    }
+
+    @Override
+    public ArrayList<StudentDTO> getAllRooms() throws SQLException, ClassNotFoundException {
+        return (ArrayList<StudentDTO>) studentDAO.getAll().stream().map(student -> convertor.fromStudent(student)).collect(Collectors.toList());
     }
 }

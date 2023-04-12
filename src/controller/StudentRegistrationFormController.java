@@ -1,11 +1,15 @@
 package controller;
 
 import com.jfoenix.controls.JFXTextField;
+import dto.RoomsDTO;
 import dto.StudentDTO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import service.custom.StudentService;
 import service.custom.impl.StudentServiceImpl;
@@ -14,6 +18,7 @@ import util.Routes;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class StudentRegistrationFormController {
     public AnchorPane pane;
@@ -32,8 +37,32 @@ public class StudentRegistrationFormController {
     public TableColumn colGender;
 
     private final StudentService studentService = new StudentServiceImpl();
+    private final ObservableList observableList = FXCollections.observableArrayList();
     public void btnBackOnAction(ActionEvent actionEvent) throws IOException {
         Navigation.navigate(Routes.MAIN_FORM,pane);
+    }
+
+    public void initialize(){
+        loadAllStudentDetails();
+    }
+
+    private void loadAllStudentDetails() {
+        colId.setCellValueFactory(new PropertyValueFactory("id"));
+        colName.setCellValueFactory(new PropertyValueFactory("name"));
+        colAddress.setCellValueFactory(new PropertyValueFactory("address"));
+        colContact.setCellValueFactory(new PropertyValueFactory("contact_Number"));
+        colBirthday.setCellValueFactory(new PropertyValueFactory("date_of_birthday"));
+        colGender.setCellValueFactory(new PropertyValueFactory("gender"));
+
+        try {
+            ArrayList<StudentDTO> allStudent = studentService.getAllRooms();
+            for (StudentDTO c:allStudent) {
+                observableList.add(c);
+                tblView.setItems(observableList);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void txtSearchOnAction(ActionEvent actionEvent) {
@@ -65,9 +94,13 @@ public class StudentRegistrationFormController {
 
         try {
             boolean b = studentService.saveStudent(new StudentDTO(student_id, name, address, contact, dob, gender));
-            new Alert(Alert.AlertType.CONFIRMATION, "Successfully Added Student !").show();
-
-        } catch (SQLException | ClassNotFoundException e) {
+            if (b){
+                new Alert(Alert.AlertType.CONFIRMATION, "Successfully Added Student !").show();
+                Navigation.navigate(Routes.STUDENT_REGISTRATION,pane);
+            }else{
+                new Alert(Alert.AlertType.ERROR, " Added Fail !").show();
+            }
+        } catch (SQLException | ClassNotFoundException | IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -86,9 +119,16 @@ public class StudentRegistrationFormController {
 
         try {
             boolean b = studentService.updateStudent(new StudentDTO(student_id, name, address, contact, dob, gender));
-            new Alert(Alert.AlertType.CONFIRMATION, "Successfully Updated Student !").show();
-        } catch (SQLException | ClassNotFoundException e) {
+            if (b) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Successfully Updated Student !").show();
+                Navigation.navigate(Routes.STUDENT_REGISTRATION,pane);
+            }else{
+                new Alert(Alert.AlertType.ERROR, "Unsuccessfully Updated Student !").show();
+            }
+            } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, "Unsuccessfully Updated Student !").show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -97,8 +137,14 @@ public class StudentRegistrationFormController {
 
         try {
             boolean b = studentService.deleteStudent(student_id);
-            new Alert(Alert.AlertType.CONFIRMATION, "Successfully Delete Student !").show();
-        } catch (SQLException | ClassNotFoundException e) {
+            if(b){
+                new Alert(Alert.AlertType.CONFIRMATION, "Successfully Delete Student !").show();
+                Navigation.navigate(Routes.STUDENT_REGISTRATION,pane);
+            }else{
+                new Alert(Alert.AlertType.ERROR, "Delete Fail Student !").show();
+                Navigation.navigate(Routes.STUDENT_REGISTRATION,pane);
+            }
+        } catch (SQLException | ClassNotFoundException | IOException e) {
             new Alert(Alert.AlertType.ERROR, "Delete Fail Student !").show();
         }
     }

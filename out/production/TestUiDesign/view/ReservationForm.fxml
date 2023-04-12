@@ -41,12 +41,11 @@
             </Label>
          </children>
       </Pane>
-      <Label layoutX="86.0" layoutY="192.0" text="Room Type :">
+      <Label layoutX="819.0" layoutY="192.0" text="Room Type :">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cmbRoomType" layoutX="250.0" layoutY="195.0" onAction="#cmbRoomTypeOnAction" prefHeight="31.0" prefWidth="164.0" promptText="      Selecet Type" />
       <Label layoutX="1370.0" layoutY="192.0" text="Available Room : ">
          <font>
             <Font name="System Bold" size="25.0" />
@@ -66,21 +65,17 @@
          <font>
             <Font name="System Bold" size="25.0" />
          </font></Label>
-      <Label layoutX="809.0" layoutY="191.0" text=" Room ID : ">
+      <Label layoutX="184.0" layoutY="192.0" text=" Room ID : ">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="lblRoomId" layoutX="949.0" layoutY="193.0" prefHeight="21.0" prefWidth="115.0">
-         <font>
-            <Font size="25.0" />
-         </font></Label>
       <Label layoutX="1039.0" layoutY="325.0" text="Date :">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="1121.0" layoutY="324.0" prefHeight="36.0" prefWidth="154.0">
+      <Label fx:id="lblTime" layoutX="1121.0" layoutY="324.0" prefHeight="36.0" prefWidth="154.0">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
@@ -117,9 +112,20 @@
       </ImageView>
       <ImageView fitHeight="44.0" fitWidth="49.0" layoutX="1064.0" layoutY="446.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assests/update_user.png" />
+            <Image url="@../assests/update_user.png" />reservation
          </image>
       </ImageView>
       <TextField layoutX="206.0" layoutY="459.0" onAction="#txtSearchOnAction" prefHeight="31.0" prefWidth="335.0" promptText="      Search Any" />
+      <ImageView fitHeight="44.0" fitWidth="49.0" layoutX="1406.0" layoutY="444.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/delete.png" />
+         </image>
+      </ImageView>
+      <ComboBox fx:id="cmbRoomID" layoutX="314.0" layoutY="196.0" onAction="#cmbRoomIdOnAction" prefHeight="31.0" prefWidth="164.0" promptText="          Selecet ID" />
+      <Label fx:id="lblRoomType" layoutX="984.0" layoutY="194.0" prefHeight="21.0" prefWidth="101.0">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
