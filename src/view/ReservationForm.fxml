@@ -20,7 +20,7 @@
    <children>
       <AnchorPane fx:id="pane" layoutX="10.0" layoutY="10.0" prefHeight="985.0" prefWidth="1890.0" styleClass="pane" stylesheets="@../style/.css">
          <children>
-            <Pane layoutX="-3.0" prefHeight="129.0" prefWidth="1895.0" style="-fx-background-radius: 20;" styleClass="student_Registration_Menu" stylesheets="@../style/.css">
+            <Pane layoutX="-7.0" prefHeight="129.0" prefWidth="1895.0" style="-fx-background-radius: 20;" styleClass="student_Registration_Menu" stylesheets="@../style/.css">
                <children>
                   <ImageView fitHeight="115.0" fitWidth="118.0" layoutX="20.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -30,19 +30,6 @@
                   <Button layoutX="1808.0" layoutY="35.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="44.0" prefWidth="71.0" styleClass="backButton" stylesheets="@../style/.css" text="Back" />
                </children>
             </Pane>
-            <Label layoutX="665.0" layoutY="17.0" prefHeight="103.0" prefWidth="566.0" styleClass="student_Registration_label" stylesheets="@../style/.css" text="Student Registration">
-               <font>
-                  <Font name="System Bold" size="55.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="0.5922330097087378" startX="1.0" startY="0.6941747572815534">
-                     <stops>
-                        <Stop color="#f4ff00" />
-                        <Stop color="BLACK" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
             <Label layoutX="57.0" layoutY="364.0" text="Student ID :">
                <font>
@@ -54,19 +41,18 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <Label layoutX="33.0" layoutY="220.0" text="Reservation ID">
+            <Label layoutX="33.0" layoutY="220.0" text="Reservation ID :">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="txtReservationID" layoutX="215.0" layoutY="223.0" onAction="#txtReservationIdOnAction" prefHeight="31.0" prefWidth="200.0" promptText="            Reservation ID" />
-            <Label layoutX="1045.0" layoutY="218.0" text="Room Id  :">
+            <Label layoutX="528.0" layoutY="221.0" text="Room Id  :">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
             <JFXTextField fx:id="txtStatus" layoutX="634.0" layoutY="367.0" prefHeight="31.0" prefWidth="200.0" promptText="                   Money" />
-            <Label layoutX="521.0" layoutY="218.0" text="Room Type">
+            <Label layoutX="1043.0" layoutY="221.0" text="Room Type :">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
@@ -104,37 +90,32 @@
                   <Image url="@../assests/delete.png" />
                </image>
             </ImageView>
-            <ComboBox layoutX="685.0" layoutY="221.0" onAction="#txtRoomTypeOnAction" prefHeight="31.0" prefWidth="180.0" promptText="        Select Type" />
-            <Label fx:id="lblRoomId" layoutX="1190.0" layoutY="216.0" prefHeight="21.0" prefWidth="115.0">
+            <ComboBox fx:id="cmbRoomId" layoutX="664.0" layoutY="228.0" onAction="#cmbRoomIdOnAction" prefHeight="31.0" prefWidth="180.0" promptText="        Select Type" />
+            <Label fx:id="lblRoomType" layoutX="1206.0" layoutY="221.0" prefHeight="21.0" prefWidth="115.0">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
             <ComboBox fx:id="cmbStudentId" layoutX="205.0" layoutY="369.0" onAction="#cmbStudentIdOnAction" prefHeight="31.0" prefWidth="172.0" promptText="            Select ID" />
+            <Label layoutX="235.0" layoutY="224.0" prefHeight="21.0" prefWidth="140.0">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="647.0" layoutY="16.0" styleClass="student_Registration_label" stylesheets="@../style/.css" text="Manage Reservation">
+               <font>
+                  <Font name="System Bold" size="55.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="0.7233009708737863" startX="1.0" startY="0.6116504854368932">
+                     <stops>
+                        <Stop color="BLACK" />
+                        <Stop color="#f2ff00" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
          </children>
       </AnchorPane>
-      <Pane layoutX="7.0" layoutY="10.0" prefHeight="129.0" prefWidth="1895.0" style="-fx-background-radius: 20;" styleClass="student_Registration_Menu" stylesheets="@../style/.css">
-         <children>
-            <ImageView fitHeight="115.0" fitWidth="118.0" layoutX="20.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assests/201818.png" />
-               </image>
-            </ImageView>
-            <Button layoutX="1808.0" layoutY="35.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="44.0" prefWidth="71.0" styleClass="backButton" stylesheets="@../style/.css" text="Back" />
-         </children>
-      </Pane>
-      <Label layoutX="757.0" layoutY="27.0" prefHeight="103.0" prefWidth="355.0" styleClass="student_Registration_label" stylesheets="@../style/.css" text=" Reservation">
-         <font>
-            <Font name="System Bold" size="55.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="0.5922330097087378" startX="1.0" startY="0.6941747572815534">
-               <stops>
-                  <Stop color="#f4ff00" />
-                  <Stop color="BLACK" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </textFill>
-      </Label>
    </children>
 </AnchorPane>
