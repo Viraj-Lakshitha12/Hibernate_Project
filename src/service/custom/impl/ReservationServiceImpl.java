@@ -18,29 +18,24 @@ public class ReservationServiceImpl implements ReservationService {
     private final Convertor convertor = new Convertor();
 
     @Override
-    public boolean saveRooms(ReservationDTO reservationDTO) throws SQLException, ClassNotFoundException {
-        return false;
-    }
-
-    @Override
-    public boolean updateRooms(ReservationDTO reservationDTO) throws SQLException, ClassNotFoundException {
-        return false;
-    }
-
-    @Override
-    public boolean deleteRooms(String id) throws SQLException, ClassNotFoundException {
-        return false;
-    }
-
-    @Override
-    public RoomsDTO searchRooms(String id) throws SQLException, ClassNotFoundException {
-        return null;
-    }
-
-    @Override
-    public ArrayList<ReservationDTO> getAllRooms() throws SQLException, ClassNotFoundException {
+    public ArrayList<ReservationDTO> getAllReservation() throws SQLException, ClassNotFoundException {
         return (ArrayList<ReservationDTO>) reservationDAO.getAll().stream().map(reservation -> convertor.fromReservation(reservation)).collect(Collectors.toList());
-
     }
-
+    @Override
+    public boolean saveReservation(ReservationDTO reservationDTO) throws SQLException, ClassNotFoundException {
+        return reservationDAO.save(convertor.toReservation(reservationDTO));
+    }
+    @Override
+    public boolean updateReservation(ReservationDTO reservationDTO) throws SQLException, ClassNotFoundException {
+        return reservationDAO.update(convertor.toReservation(reservationDTO));
+    }
+    @Override
+    public boolean deleteReservation(String id) throws SQLException, ClassNotFoundException {
+        return reservationDAO.deleteByPk(id);
+    }
+    @Override
+    public ReservationDTO searchReservation(String id) throws SQLException, ClassNotFoundException {
+        Reservation reservation = reservationDAO.findByPk(id);
+        return convertor.fromReservation(reservation);
+    }
 }

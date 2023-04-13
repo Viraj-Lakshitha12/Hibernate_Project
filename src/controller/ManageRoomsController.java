@@ -46,7 +46,7 @@ public class ManageRoomsController {
 
     private void loadAllRoomDetails() {
         colRoomId.setCellValueFactory(new PropertyValueFactory("roomId"));
-        colRoomType.setCellValueFactory(new PropertyValueFactory("room_type"));
+        colRoomType.setCellValueFactory(new PropertyValueFactory("roomType"));
         colKeyMoney.setCellValueFactory(new PropertyValueFactory("key_money"));
         colQty.setCellValueFactory(new PropertyValueFactory("qty"));
 

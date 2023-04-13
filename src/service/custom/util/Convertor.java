@@ -23,9 +23,9 @@ public class Convertor {
     }
 
     public ReservationDTO fromReservation(Reservation reservation){
-        return new ReservationDTO(reservation.getReservation_id(),reservation.getDate(),reservation.getStudent_id(),reservation.getRoom_type(),reservation.getStatus());
+        return new ReservationDTO(reservation.getReservation_id(),reservation.getDate(),reservation.getStudent_id(),reservation.getRoom_id(),reservation.getRoom_type(),reservation.getStatus());
     }
     public Reservation toReservation(ReservationDTO reservationDTO){
-        return new Reservation(reservationDTO.getReservation_id(),reservationDTO.getDate(),reservationDTO.getReservation_id(),reservationDTO.getRoom_type(),reservationDTO.getStatus());
+        return new Reservation(reservationDTO.getReservation_id(),reservationDTO.getDate(),reservationDTO.getStudent_id(),reservationDTO.getRoom_id(),reservationDTO.getRoom_type(),reservationDTO.getStatus());
     }
 }

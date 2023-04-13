@@ -14,22 +14,69 @@ import java.util.List;
 
 public class ReservationDAOImpl implements ReservationDAO {
     @Override
-    public boolean save(Reservation entity) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean save(Reservation reservation) throws SQLException, ClassNotFoundException {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        try {
+            session.save(reservation);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            transaction.rollback();
+            return false;
+        } finally {
+            session.close();
+        }
     }
 
     @Override
-    public boolean update(Reservation entity) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean update(Reservation reservation) throws SQLException, ClassNotFoundException {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            session.update(reservation);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            transaction.rollback();
+            return false;
+        } finally {
+            session.close();
+        }
     }
 
     @Override
     public boolean deleteByPk(String pk) throws SQLException, ClassNotFoundException {
-        return false;
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            Reservation reservation = session.get(Reservation.class, pk);
+            session.delete(reservation);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            transaction.rollback();
+            return false;
+        } finally {
+            session.close();
+        }
     }
 
     @Override
     public Reservation findByPk(String pk) throws SQLException, ClassNotFoundException {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        try {
+            Reservation reservation = session.get(Reservation.class, pk);
+            transaction.commit();
+            return reservation;
+        } catch (Exception e) {
+            transaction.rollback();
+        } finally {
+            session.close();
+        }
         return null;
     }
 

@@ -11,16 +11,26 @@ public class Reservation {
     String reservation_id;
     String date;
     String student_id;
+    String room_id;
     String room_type;
     String status;
 
     public Reservation() {
     }
 
-    public Reservation(String reservation_id, String date, String student_id, String room_type, String status) {
+    public String getRoom_id() {
+        return room_id;
+    }
+
+    public void setRoom_id(String room_id) {
+        this.room_id = room_id;
+    }
+
+    public Reservation(String reservation_id, String date, String student_id, String room_id, String room_type, String status) {
         this.reservation_id = reservation_id;
         this.date = date;
         this.student_id = student_id;
+        this.room_id = room_id;
         this.room_type = room_type;
         this.status = status;
     }
@@ -71,6 +81,7 @@ public class Reservation {
                 "reservation_id='" + reservation_id + '\'' +
                 ", date='" + date + '\'' +
                 ", student_id='" + student_id + '\'' +
+                ", room_id='" + room_id + '\'' +
                 ", room_type='" + room_type + '\'' +
                 ", status='" + status + '\'' +
                 '}';

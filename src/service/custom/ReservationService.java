@@ -8,9 +8,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface ReservationService{
-    boolean saveRooms(ReservationDTO reservationDTO) throws SQLException, ClassNotFoundException;
-    boolean updateRooms(ReservationDTO reservationDTO) throws SQLException, ClassNotFoundException;
-    boolean deleteRooms(String id) throws SQLException, ClassNotFoundException;
-    RoomsDTO searchRooms(String id) throws SQLException, ClassNotFoundException;
-    ArrayList<ReservationDTO> getAllRooms() throws SQLException, ClassNotFoundException;
+    boolean saveReservation(ReservationDTO reservationDTO) throws SQLException, ClassNotFoundException;
+    boolean updateReservation(ReservationDTO reservationDTO) throws SQLException, ClassNotFoundException;
+    boolean deleteReservation(String id) throws SQLException, ClassNotFoundException;
+    ReservationDTO searchReservation(String id) throws SQLException, ClassNotFoundException;
+    ArrayList<ReservationDTO> getAllReservation() throws SQLException, ClassNotFoundException;
 }

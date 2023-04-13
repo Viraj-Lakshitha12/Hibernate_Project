@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
@@ -18,9 +17,9 @@
 
 <AnchorPane prefHeight="985.0" prefWidth="1890.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReservationFormController">
    <children>
-      <AnchorPane fx:id="pane" layoutX="10.0" layoutY="10.0" prefHeight="985.0" prefWidth="1890.0" styleClass="pane" stylesheets="@../style/.css">
+      <AnchorPane fx:id="pane" layoutX="10.0" layoutY="-7.0" prefHeight="985.0" prefWidth="1890.0" styleClass="pane" stylesheets="@../style/.css">
          <children>
-            <Pane layoutX="-7.0" prefHeight="129.0" prefWidth="1895.0" style="-fx-background-radius: 20;" styleClass="student_Registration_Menu" stylesheets="@../style/.css">
+            <Pane layoutX="-5.0" layoutY="6.0" prefHeight="129.0" prefWidth="1895.0" style="-fx-background-radius: 20;" styleClass="student_Registration_Menu" stylesheets="@../style/.css">
                <children>
                   <ImageView fitHeight="115.0" fitWidth="118.0" layoutX="20.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -30,29 +29,28 @@
                   <Button layoutX="1808.0" layoutY="35.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="44.0" prefWidth="71.0" styleClass="backButton" stylesheets="@../style/.css" text="Back" />
                </children>
             </Pane>
-            <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <Label layoutX="57.0" layoutY="364.0" text="Student ID :">
+            <Label layoutX="38.0" layoutY="367.0" text="Student ID :">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <Label layoutX="521.0" layoutY="363.0" text="Status  :">
+            <Label layoutX="521.0" layoutY="367.0" text="Status  :">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <Label layoutX="33.0" layoutY="220.0" text="Reservation ID :">
+            <Label layoutX="33.0" layoutY="223.0" text="Reservation ID :">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <Label layoutX="528.0" layoutY="221.0" text="Room Id  :">
+            <Label layoutX="713.0" layoutY="224.0" text="Room Id  :">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="txtStatus" layoutX="634.0" layoutY="367.0" prefHeight="31.0" prefWidth="200.0" promptText="                   Money" />
-            <Label layoutX="1043.0" layoutY="221.0" text="Room Type :">
+            <JFXTextField fx:id="txtStatus" layoutX="634.0" layoutY="369.0" prefHeight="31.0" prefWidth="200.0" promptText="                   Money" />
+            <Label layoutX="1228.0" layoutY="224.0" text="Room Type :">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
@@ -61,13 +59,14 @@
             <JFXButton layoutX="1583.0" layoutY="227.0" onAction="#btnSearchOnAction" prefHeight="44.0" prefWidth="243.0" ripplerFill="RED" style="-fx-padding: 0;" styleClass="CrudButton" stylesheets="@../style/.css" text="Search" />
             <JFXButton layoutX="1583.0" layoutY="300.0" onAction="#btnUpdateOnAction" prefHeight="44.0" prefWidth="243.0" ripplerFill="RED" style="-fx-padding: 0;" styleClass="CrudButton" stylesheets="@../style/.css" text="Update" />
             <JFXButton layoutX="1583.0" layoutY="371.0" onAction="#btnDeleteOnAction" prefHeight="44.0" prefWidth="243.0" ripplerFill="RED" style="-fx-padding: 0;" styleClass="CrudButton" stylesheets="@../style/.css" text="Delete" />
-            <TableView fx:id="tblView" layoutX="114.0" layoutY="465.0" prefHeight="493.0" prefWidth="1594.0">
+            <TableView fx:id="tblView" layoutX="20.0" layoutY="465.0" prefHeight="493.0" prefWidth="1840.0">
                <columns>
                   <TableColumn fx:id="colId" prefWidth="284.0" text="Reservation ID" />
-                  <TableColumn fx:id="colRoomType" prefWidth="305.0" text="Room Type" />
-                  <TableColumn fx:id="colRoomId" prefWidth="366.33331298828125" text="Room Id" />
+                  <TableColumn fx:id="colRoomId" prefWidth="305.0" text="Room ID" />
+                  <TableColumn fx:id="colRoomType" prefWidth="366.33331298828125" text="Room Type" />
                   <TableColumn fx:id="colStudentId" prefWidth="365.66668701171875" text="Student Id" />
                   <TableColumn fx:id="colStatus" prefWidth="269.3333740234375" text="Status" />
+                  <TableColumn fx:id="colDate" prefWidth="247.0" text="Date" />
                </columns>
             </TableView>
             <ImageView fitHeight="41.0" fitWidth="53.0" layoutX="1607.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
@@ -90,14 +89,14 @@
                   <Image url="@../assests/delete.png" />
                </image>
             </ImageView>
-            <ComboBox fx:id="cmbRoomId" layoutX="664.0" layoutY="228.0" onAction="#cmbRoomIdOnAction" prefHeight="31.0" prefWidth="180.0" promptText="        Select Type" />
-            <Label fx:id="lblRoomType" layoutX="1206.0" layoutY="221.0" prefHeight="21.0" prefWidth="115.0">
+            <ComboBox fx:id="cmbRoomId" layoutX="849.0" layoutY="230.0" onAction="#cmbRoomIdOnAction" prefHeight="31.0" prefWidth="180.0" promptText="        Select Type" />
+            <Label fx:id="lblRoomType" layoutX="1391.0" layoutY="224.0" prefHeight="21.0" prefWidth="115.0">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <ComboBox fx:id="cmbStudentId" layoutX="205.0" layoutY="369.0" onAction="#cmbStudentIdOnAction" prefHeight="31.0" prefWidth="172.0" promptText="            Select ID" />
-            <Label layoutX="235.0" layoutY="224.0" prefHeight="21.0" prefWidth="140.0">
+            <ComboBox fx:id="cmbStudentId" layoutX="188.0" layoutY="371.0" onAction="#cmbStudentIdOnAction" prefHeight="31.0" prefWidth="172.0" promptText="            Select ID" />
+            <Label fx:id="lblReservationId" layoutX="225.0" layoutY="224.0" prefHeight="21.0" prefWidth="140.0">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
@@ -115,6 +114,17 @@
                   </LinearGradient>
                </textFill>
             </Label>
+            <Label layoutX="974.0" layoutY="366.0" text="Date  :">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblDate" layoutX="1057.0" layoutY="367.0" prefHeight="36.0" prefWidth="163.0">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtReservationId" layoutX="392.0" layoutY="223.0" onAction="#txtReservationIDOnAction" promptText="      Search Resrvation " />
          </children>
       </AnchorPane>
    </children>
