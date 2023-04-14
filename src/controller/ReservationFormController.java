@@ -78,7 +78,7 @@ public class ReservationFormController {
         generateReservationId();
         loadLocalDate();
         loadPaymentStatus();
-        loadAllReservationDetails();
+        //loadAllReservationDetails();
     }
 
     private void loadPaymentStatus() {
@@ -176,29 +176,29 @@ public class ReservationFormController {
         String room_type = txtType.getText();
         String status = paymentStatus.getSelectionModel().getSelectedItem().toString();
 
-
-        ReservationDTO reservationDTO = new ReservationDTO(reservation_id,date,student_id,room_id,room_type, status);
-        try {
-            boolean b = reservationService.saveReservation(reservationDTO);
-            if (b){
-//                boolean b1=false;
 //
-//                if (paymentStatus.getSelectionModel().getSelectedItem().toString().equals("Paid")){
-//                    double s = Double.parseDouble(txtStatus.getText());
-//                     b1= roomsService.reservationQtyUpdate(new RoomsDTO(lblRoomId.getText(), lblRoomType.getText(),s,1));
-//                }else{
-//                    b1 = roomsService.reservationQtyUpdate(new RoomsDTO(lblRoomId.getText(), lblRoomType.getText(),0,1));
-//                }
-                    if (true){
-                        new Alert(Alert.AlertType.CONFIRMATION, "Successfully Added !").show();
-                        Navigation.navigate(Routes.RESERVATION,pane);
-                    }else {
-                        new Alert(Alert.AlertType.ERROR, "Added Fail!").show();
-                    }
-            }
-        } catch (SQLException | ClassNotFoundException | IOException e) {
-            throw new RuntimeException(e);
-        }
+//       // ReservationDTO reservationDTO = new ReservationDTO(reservation_id,date,new Student(student_id,student_name,address,contact), new Rooms(room_id,room_type,roo),status ,student_id);
+//        try {
+//         //   boolean b = reservationService.saveReservation(reservationDTO);
+//            if (true){
+////                boolean b1=false;
+////
+////                if (paymentStatus.getSelectionModel().getSelectedItem().toString().equals("Paid")){
+////                    double s = Double.parseDouble(txtStatus.getText());
+////                     b1= roomsService.reservationQtyUpdate(new RoomsDTO(lblRoomId.getText(), lblRoomType.getText(),s,1));
+////                }else{
+////                    b1 = roomsService.reservationQtyUpdate(new RoomsDTO(lblRoomId.getText(), lblRoomType.getText(),0,1));
+////                }
+//                    if (true){
+//                        new Alert(Alert.AlertType.CONFIRMATION, "Successfully Added !").show();
+//                        Navigation.navigate(Routes.RESERVATION,pane);
+//                    }else {
+//                        new Alert(Alert.AlertType.ERROR, "Added Fail!").show();
+//                    }
+//            }
+//        } catch (SQLException | ClassNotFoundException | IOException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     public void btnSearchOnAction(ActionEvent actionEvent) {
@@ -206,34 +206,34 @@ public class ReservationFormController {
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
-        String reservation_id = lblReservationId.getText();
-        LocalDate date = LocalDate.parse(lblDate.getText());
-
-
-        String student_id = cmbStudentId.getSelectionModel().getSelectedItem().toString();
-        String student_name = txtName.getText();
-        String address = txtAddress.getText();
-        String contact = txtContactNo.getText();
-
-
-        String room_id = cmbRoomId.getSelectionModel().getSelectedItem().toString();
-        String room_type = txtType.getText();
-        String status = paymentStatus.getSelectionModel().getSelectedItem().toString();
-
-
-        ReservationDTO reservationDTO = new ReservationDTO(reservation_id,date,student_id,room_id,room_type, status);
-        try {
-            boolean b = reservationService.updateReservation(reservationDTO);
-            if (b){
-                new Alert(Alert.AlertType.CONFIRMATION, "Successfully Update !").show();
-                Navigation.navigate(Routes.RESERVATION,pane);
-            }else {
-                new Alert(Alert.AlertType.ERROR, "Added Fail!").show();
-
-            }
-        } catch (SQLException | ClassNotFoundException | IOException e) {
-            throw new RuntimeException(e);
-        }
+//        String reservation_id = lblReservationId.getText();
+//        LocalDate date = LocalDate.parse(lblDate.getText());
+//
+//
+//        String student_id = cmbStudentId.getSelectionModel().getSelectedItem().toString();
+//        String student_name = txtName.getText();
+//        String address = txtAddress.getText();
+//        String contact = txtContactNo.getText();
+//
+//
+//        String room_id = cmbRoomId.getSelectionModel().getSelectedItem().toString();
+//        String room_type = txtType.getText();
+//        String status = paymentStatus.getSelectionModel().getSelectedItem().toString();
+//
+//
+//        ReservationDTO reservationDTO = new ReservationDTO(reservation_id,date,student_id,room_id,room_type, status);
+//        try {
+//            boolean b = reservationService.updateReservation(reservationDTO);
+//            if (b){
+//                new Alert(Alert.AlertType.CONFIRMATION, "Successfully Update !").show();
+//                Navigation.navigate(Routes.RESERVATION,pane);
+//            }else {
+//                new Alert(Alert.AlertType.ERROR, "Added Fail!").show();
+//
+//            }
+//        } catch (SQLException | ClassNotFoundException | IOException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {

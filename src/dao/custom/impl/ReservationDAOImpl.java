@@ -1,6 +1,7 @@
 package dao.custom.impl;
 
 import dao.custom.ReservationDAO;
+import dto.ReservationDTO;
 import entity.Reservation;
 import entity.Rooms;
 import org.hibernate.Session;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class ReservationDAOImpl implements ReservationDAO {
     @Override
-    public boolean save(Reservation reservation) throws SQLException, ClassNotFoundException {
+    public boolean save(ReservationDTO reservation) throws SQLException, ClassNotFoundException {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
@@ -31,7 +32,7 @@ public class ReservationDAOImpl implements ReservationDAO {
     }
 
     @Override
-    public boolean update(Reservation reservation) throws SQLException, ClassNotFoundException {
+    public boolean update(ReservationDTO reservation) throws SQLException, ClassNotFoundException {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -64,31 +65,31 @@ public class ReservationDAOImpl implements ReservationDAO {
     }
 
     @Override
-    public Reservation findByPk(String pk) throws SQLException, ClassNotFoundException {
-        Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-
-        try {
-            Reservation reservation = session.get(Reservation.class, pk);
-            transaction.commit();
-            return reservation;
-        } catch (Exception e) {
-            transaction.rollback();
-        } finally {
-            session.close();
-        }
+    public ReservationDTO findByPk(String pk) throws SQLException, ClassNotFoundException {
+//        Session session = FactoryConfiguration.getInstance().getSession();
+//        Transaction transaction = session.beginTransaction();
+//
+//        try {
+//            ReservationDTO reservation = session.get(Reservation.class, pk);
+//            transaction.commit();
+//            return reservation;
+//        } catch (Exception e) {
+//            transaction.rollback();
+//        } finally {
+//            session.close();
+//        }
         return null;
     }
 
     @Override
-    public ArrayList<Reservation> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<ReservationDTO> getAll() throws SQLException, ClassNotFoundException {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
         try {
             String s="FROM Reservation ";
             Query query = session.createQuery(s);
-            List<Reservation> list = query.list();
+            List<ReservationDTO> list = query.list();
 
             transaction.commit();
             return new ArrayList<>(list);

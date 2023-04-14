@@ -21,10 +21,8 @@ public class ReservationDTO {
     @Id
     String reservation_id;
     LocalDate date;
-    String student_id;
     String room_id;
-    String room_type;
     String status;
-
+    String student_id;
 
 }

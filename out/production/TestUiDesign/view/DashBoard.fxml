@@ -165,6 +165,11 @@
                   </Label>
                </children>
             </HBox>
+            <ImageView fitHeight="349.0" fitWidth="412.0" layoutX="791.0" layoutY="301.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .8;">
+               <image>
+                  <Image url="@../assests/login.png" />
+               </image>
+            </ImageView>
             
                      </children>
       </AnchorPane>

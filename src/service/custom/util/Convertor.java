@@ -26,7 +26,6 @@ public class Convertor {
         String id = reservation.getStudent().getId();
         String roomId = reservation.getRoom().getRoomId();
         String room_type = reservation.getRoom().getRoom_type();
-        return new ReservationDTO(reservation.getRes_id(),reservation.getDate(),id,roomId,room_type,reservation.getStatus());
+        return new ReservationDTO(reservation.getRes_id(),reservation.getDate(),id,roomId,reservation.getStatus());
     }
-
 }

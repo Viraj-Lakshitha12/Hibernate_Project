@@ -120,7 +120,7 @@ public class DashBoardController {
         Navigation.navigate(Routes.MANAGE_USERS,root);
     }
 
-    public void Logout(MouseEvent event) {
-
+    public void Logout(MouseEvent event) throws IOException {
+        Navigation.navigate(Routes.LOGIN,root);
     }
 }

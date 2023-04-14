@@ -35,6 +35,10 @@ public class Navigation {
                 window.setTitle("manage Users");
                 initUI("Users.fxml");
                 break;
+            case LOGIN:
+                window.setTitle("Login Form");
+                initUI("LoginPage.fxml");
+                break;
             default:
                 new Alert(Alert.AlertType.ERROR, "UI Not Found!").show();
         }
