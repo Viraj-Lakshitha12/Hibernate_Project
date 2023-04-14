@@ -97,4 +97,24 @@ public class RoomsDAOImpl implements RoomsDAO {
         }
         return null;
     }
+
+    @Override
+    public boolean reservationQtyUpdate(Rooms rooms) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        String r = rooms.getRoomId();
+        String t = rooms.getRoom_type();
+        double k = rooms.getKey_money();
+        try {
+            String s="UPDATE Rooms SET qty=:qty-1 , key_money=:k ,room_type=:t  WHERE roomId=:r ";
+             session.createQuery(s);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            transaction.rollback();
+            return false;
+        } finally {
+            session.close();
+        }
+    }
 }

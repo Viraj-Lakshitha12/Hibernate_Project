@@ -23,11 +23,11 @@ public class ReservationServiceImpl implements ReservationService {
     }
     @Override
     public boolean saveReservation(ReservationDTO reservationDTO) throws SQLException, ClassNotFoundException {
-        return reservationDAO.save(convertor.toReservation(reservationDTO));
+        return true; //reservationDAO.save(convertor.toReservation(reservationDTO));
     }
     @Override
     public boolean updateReservation(ReservationDTO reservationDTO) throws SQLException, ClassNotFoundException {
-        return reservationDAO.update(convertor.toReservation(reservationDTO));
+        return true;// reservationDAO.update(convertor.toReservation(reservationDTO));
     }
     @Override
     public boolean deleteReservation(String id) throws SQLException, ClassNotFoundException {

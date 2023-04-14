@@ -1,6 +1,7 @@
 package service.custom;
 
 import dto.RoomsDTO;
+import entity.Rooms;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -11,4 +12,5 @@ public interface RoomsService{
     boolean deleteRooms(String id) throws SQLException, ClassNotFoundException;
     RoomsDTO searchRooms(String id) throws SQLException, ClassNotFoundException;
     ArrayList<RoomsDTO> getAllRooms() throws SQLException, ClassNotFoundException;
+    boolean reservationQtyUpdate(RoomsDTO roomsDTO);
 }

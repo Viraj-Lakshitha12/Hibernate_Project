@@ -18,6 +18,7 @@ import util.Routes;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class StudentRegistrationFormController {
@@ -47,11 +48,11 @@ public class StudentRegistrationFormController {
     }
 
     private void loadAllStudentDetails() {
-        colId.setCellValueFactory(new PropertyValueFactory("id"));
+        colId.setCellValueFactory(new PropertyValueFactory("student_id"));
         colName.setCellValueFactory(new PropertyValueFactory("name"));
         colAddress.setCellValueFactory(new PropertyValueFactory("address"));
-        colContact.setCellValueFactory(new PropertyValueFactory("contact_Number"));
-        colBirthday.setCellValueFactory(new PropertyValueFactory("date_of_birthday"));
+        colContact.setCellValueFactory(new PropertyValueFactory("contact_no"));
+        colBirthday.setCellValueFactory(new PropertyValueFactory("dob"));
         colGender.setCellValueFactory(new PropertyValueFactory("gender"));
 
         try {
@@ -70,11 +71,11 @@ public class StudentRegistrationFormController {
         try {
             StudentDTO studentDTO = studentService.searchStudent(student_id);
             if (studentDTO!=null) {
-                txtStudentId.setText(studentDTO.getId());
+                txtStudentId.setText(studentDTO.getStudent_id());
                 txtName.setText(studentDTO.getName());
                 txtAddress.setText(studentDTO.getAddress());
-                txtContact.setText(studentDTO.getContact_Number());
-                txtBirthday.setText(studentDTO.getDate_of_birthday());
+                txtContact.setText(studentDTO.getContact_no());
+                txtBirthday.setText(String.valueOf(studentDTO.getDob()));
                 txtGender.setText(studentDTO.getGender());
             }else {
                 new Alert(Alert.AlertType.ERROR, "Not Found Student!..Try Again").show();
@@ -89,7 +90,7 @@ public class StudentRegistrationFormController {
         String name=txtName.getText();
         String address=txtAddress.getText();
         String contact = txtContact.getText();
-        String dob = txtBirthday.getText();
+        LocalDate dob = LocalDate.parse(txtBirthday.getText());
         String gender=txtGender.getText();
 
         try {
@@ -114,7 +115,7 @@ public class StudentRegistrationFormController {
         String name=txtName.getText();
         String address=txtAddress.getText();
         String contact = txtContact.getText();
-        String dob = txtBirthday.getText();
+        LocalDate dob = LocalDate.parse(txtBirthday.getText());
         String gender=txtGender.getText();
 
         try {
