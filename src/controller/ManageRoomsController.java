@@ -63,7 +63,14 @@ public class ManageRoomsController {
     }
 
     public void btnBackOnAction(ActionEvent actionEvent) throws IOException {
-        Navigation.navigate(Routes.MAIN_FORM,pane);
+        Stage stage1 = (Stage) pane.getScene().getWindow();
+        stage1.close();
+        URL resource = getClass().getResource("/view/DashBoard.fxml");
+        Parent load = FXMLLoader.load(resource);
+        Stage stage2 = new Stage();
+        Scene scene = new Scene(load);
+        stage2.setScene(scene);
+        stage2.show();
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) {

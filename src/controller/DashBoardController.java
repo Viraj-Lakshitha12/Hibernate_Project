@@ -17,6 +17,7 @@ import util.Navigation;
 import util.Routes;
 
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -121,6 +122,13 @@ public class DashBoardController {
     }
 
     public void Logout(MouseEvent event) throws IOException {
-        Navigation.navigate(Routes.LOGIN,root);
+        Stage stage1 = (Stage) root.getScene().getWindow();
+        stage1.close();
+        URL resource = getClass().getResource("/view/LoginPage.fxml");
+        Parent load = FXMLLoader.load(resource);
+        Stage stage2 = new Stage();
+        Scene scene = new Scene(load);
+        stage2.setScene(scene);
+        stage2.show();
     }
 }

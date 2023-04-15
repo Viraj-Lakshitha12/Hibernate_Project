@@ -6,17 +6,22 @@ import dto.StudentDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import service.custom.StudentService;
 import service.custom.impl.StudentServiceImpl;
 import util.Navigation;
 import util.Routes;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -40,7 +45,14 @@ public class StudentRegistrationFormController {
     private final StudentService studentService = new StudentServiceImpl();
     private final ObservableList observableList = FXCollections.observableArrayList();
     public void btnBackOnAction(ActionEvent actionEvent) throws IOException {
-        Navigation.navigate(Routes.MAIN_FORM,pane);
+        Stage stage1 = (Stage) pane.getScene().getWindow();
+        stage1.close();
+        URL resource = getClass().getResource("/view/DashBoard.fxml");
+        Parent load = FXMLLoader.load(resource);
+        Stage stage2 = new Stage();
+        Scene scene = new Scene(load);
+        stage2.setScene(scene);
+        stage2.show();
     }
 
     public void initialize(){

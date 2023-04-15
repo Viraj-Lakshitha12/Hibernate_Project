@@ -3,9 +3,11 @@ package service.custom.util;
 import dto.ReservationDTO;
 import dto.RoomsDTO;
 import dto.StudentDTO;
+import dto.UserDTO;
 import entity.Reservation;
 import entity.Rooms;
 import entity.Student;
+import entity.User;
 
 public class Convertor {
     public RoomsDTO fromRooms(Rooms rooms){
@@ -27,5 +29,13 @@ public class Convertor {
         String roomId = reservation.getRoom().getRoomId();
         String room_type = reservation.getRoom().getRoom_type();
         return new ReservationDTO(reservation.getRes_id(),reservation.getDate(),id,roomId,reservation.getStatus());
+    }
+
+    public UserDTO fromUsers(User user){
+        return new UserDTO(user.getUserId(),user.getName(), user.getTelNo(), user.getEmail(), user.getUserName(), user.getPassword());
+    }
+
+    public User toUsers(UserDTO userDTO){
+        return new User(userDTO.getUserId(),userDTO.getName(), userDTO.getTelNo(), userDTO.getEmail(), userDTO.getUserName(), userDTO.getPassword());
     }
 }

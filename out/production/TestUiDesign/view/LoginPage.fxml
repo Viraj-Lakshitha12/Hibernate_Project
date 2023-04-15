@@ -20,7 +20,7 @@
             </ImageView>
          </children>
       </Pane>
-      <JFXTextField fx:id="txtUserName" layoutX="494.0" layoutY="195.0" prefHeight="31.0" prefWidth="267.0" promptText="User Name" />
+      <JFXTextField fx:id="txtUserName" layoutX="494.0" layoutY="195.0" prefHeight="31.0" prefWidth="267.0" promptText="User ID" />
       <JFXPasswordField fx:id="txtPassword" layoutX="494.0" layoutY="277.0" prefHeight="31.0" prefWidth="267.0" promptText="Password" />
       <Button layoutX="525.0" layoutY="353.0" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="31.0" prefWidth="165.0" style="-fx-background-color: blue; -fx-background-radius: 20;" text="Login" textFill="WHITE">
          <font>
