@@ -30,4 +30,7 @@ public class Rooms {
     }
 
 
+    public Rooms(String room_id) {
+        this.roomId = room_id;
+    }
 }

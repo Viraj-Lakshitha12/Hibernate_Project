@@ -19,11 +19,17 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public ArrayList<ReservationDTO> getAllReservation() throws SQLException, ClassNotFoundException {
-        return (ArrayList<ReservationDTO>) reservationDAO.getAll().stream().collect(Collectors.toList());
+        return null;// (ArrayList<Reservation) reservationDAO.getAll().stream().collect(Collectors.toList());
     }
+
+    @Override
+    public String GenerateReservationId() {
+        return reservationDAO.GenerateReservationId();
+    }
+
     @Override
     public boolean saveReservation(ReservationDTO reservationDTO) throws SQLException, ClassNotFoundException {
-        return reservationDAO.save(reservationDTO);
+        return reservationDAO.save(convertor.toReservation(reservationDTO));
     }
     @Override
     public boolean updateReservation(ReservationDTO reservationDTO) throws SQLException, ClassNotFoundException {
@@ -35,6 +41,7 @@ public class ReservationServiceImpl implements ReservationService {
     }
     @Override
     public ReservationDTO searchReservation(String id) throws SQLException, ClassNotFoundException {
-        return reservationDAO.findByPk(id);
+//        return reservationDAO.findByPk(id);
+        return null;
     }
 }

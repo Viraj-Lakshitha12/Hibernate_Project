@@ -2,10 +2,13 @@ package controller;
 
 import com.jfoenix.controls.JFXTextField;
 import dto.UserDTO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import service.custom.UserService;
@@ -15,6 +18,7 @@ import util.Routes;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class UsersController {
 
@@ -34,6 +38,29 @@ public class UsersController {
     public JFXTextField txtPassword;
 
     private final UserService userService = new UserServiceImpl();
+    private final ObservableList observableList = FXCollections.observableArrayList();
+
+    public void initialize(){
+        loadUserDetails();
+    }
+
+    private void loadUserDetails() {
+        colUserId.setCellValueFactory(new PropertyValueFactory("userId"));
+        colName.setCellValueFactory(new PropertyValueFactory("name"));
+        colEmail.setCellValueFactory(new PropertyValueFactory("email"));
+        colTelNo.setCellValueFactory(new PropertyValueFactory("telNo"));
+        colUserName.setCellValueFactory(new PropertyValueFactory("userName"));
+        colPassword.setCellValueFactory(new PropertyValueFactory("password"));
+        try {
+            ArrayList<UserDTO> allUsers = userService.getAllUsers();
+            for (UserDTO u:allUsers) {
+                observableList.add(u);
+                tblUser.setItems(observableList);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public void btnBackOnAction(ActionEvent actionEvent) throws IOException {
         Navigation.navigate(Routes.MAIN_FORM,pane);

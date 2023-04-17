@@ -31,6 +31,10 @@ public class Convertor {
         return new ReservationDTO(reservation.getRes_id(),reservation.getDate(),id,roomId,reservation.getStatus());
     }
 
+    public Reservation toReservation(ReservationDTO reservationDTO){
+        return new Reservation(reservationDTO.getReservation_id(),reservationDTO.getDate(),new Student(reservationDTO.getStudent_id()),new Rooms(reservationDTO.getRoom_id()),reservationDTO.getStatus());
+    }
+
     public UserDTO fromUsers(User user){
         return new UserDTO(user.getUserId(),user.getName(), user.getTelNo(), user.getEmail(), user.getUserName(), user.getPassword());
     }

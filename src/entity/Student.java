@@ -41,4 +41,7 @@ public class Student {
     }
 
 
+    public Student(String student_id) {
+        this.id = id;
+    }
 }

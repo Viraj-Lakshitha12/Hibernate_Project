@@ -15,10 +15,9 @@ import java.util.List;
 
 public class ReservationDAOImpl implements ReservationDAO {
     @Override
-    public boolean save(ReservationDTO reservation) throws SQLException, ClassNotFoundException {
+    public boolean save(Reservation reservation) throws SQLException, ClassNotFoundException {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
-
         try {
             session.save(reservation);
             transaction.commit();
@@ -32,7 +31,7 @@ public class ReservationDAOImpl implements ReservationDAO {
     }
 
     @Override
-    public boolean update(ReservationDTO reservation) throws SQLException, ClassNotFoundException {
+    public boolean update(Reservation reservation) throws SQLException, ClassNotFoundException {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -65,7 +64,7 @@ public class ReservationDAOImpl implements ReservationDAO {
     }
 
     @Override
-    public ReservationDTO findByPk(String pk) throws SQLException, ClassNotFoundException {
+    public Reservation findByPk(String pk) throws SQLException, ClassNotFoundException {
 //        Session session = FactoryConfiguration.getInstance().getSession();
 //        Transaction transaction = session.beginTransaction();
 //
@@ -82,14 +81,14 @@ public class ReservationDAOImpl implements ReservationDAO {
     }
 
     @Override
-    public ArrayList<ReservationDTO> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<Reservation> getAll() throws SQLException, ClassNotFoundException {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
         try {
             String s="FROM Reservation ";
             Query query = session.createQuery(s);
-            List<ReservationDTO> list = query.list();
+            List<Reservation> list = query.list();
 
             transaction.commit();
             return new ArrayList<>(list);
@@ -101,4 +100,15 @@ public class ReservationDAOImpl implements ReservationDAO {
         return null;
     }
 
+    @Override
+    public String GenerateReservationId() {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        List resultList = session.createSQLQuery("SELECT * FROM Reservation ORDER BY res_id DESC LIMIT 1").addEntity(Reservation.class).getResultList();
+        transaction.commit();
+        session.close();
+
+        return resultList.size()==0?"1":(((Reservation)resultList.get(0)).getRes_id())+1;
+    }
 }

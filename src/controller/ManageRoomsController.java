@@ -83,12 +83,13 @@ public class ManageRoomsController {
             boolean b = roomsService.saveRooms(new RoomsDTO(room_id, room_type, key_money, qty));
             if (b){
                 new Alert(Alert.AlertType.CONFIRMATION, "Successfully Added !").show();
+                Navigation.navigate(Routes.MANAGE_ROOMS,pane);
             }else{
                 new Alert(Alert.AlertType.CONFIRMATION, "Added  Fail!").show();
 
             }
 
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException | IOException e) {
             throw new RuntimeException(e);
         }
 
@@ -121,11 +122,13 @@ public class ManageRoomsController {
             boolean b = roomsService.updateRooms(new RoomsDTO(room_id, room_type, key_money, qty));
             if (b){
                 new Alert(Alert.AlertType.CONFIRMATION, "Successfully Update !").show();
+                Navigation.navigate(Routes.MANAGE_ROOMS,pane);
+
             }else{
                 new Alert(Alert.AlertType.CONFIRMATION, "update  Fail!").show();
 
             }
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException | IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -136,11 +139,13 @@ public class ManageRoomsController {
             boolean b = roomsService.deleteRooms(room_id);
             if (b){
                 new Alert(Alert.AlertType.CONFIRMATION, "Successfully Delete !").show();
+                Navigation.navigate(Routes.MANAGE_ROOMS,pane);
+
             }else{
                 new Alert(Alert.AlertType.CONFIRMATION, "Delete  Fail!").show();
 
             }
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException | IOException e) {
             throw new RuntimeException(e);
         }
     }

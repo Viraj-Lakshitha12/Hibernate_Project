@@ -20,12 +20,16 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import service.custom.ReservationService;
 import service.custom.RoomsService;
 import service.custom.StudentService;
 import service.custom.impl.ReservationServiceImpl;
 import service.custom.impl.RoomsServiceImpl;
 import service.custom.impl.StudentServiceImpl;
+import service.custom.util.Convertor;
+import util.FactoryConfiguration;
 import util.Navigation;
 import util.Routes;
 
@@ -50,6 +54,8 @@ public class ReservationFormController {
     private final RoomsService roomsService = new RoomsServiceImpl();
     private final StudentService studentService = new StudentServiceImpl();
     private final ReservationService reservationService = new ReservationServiceImpl();
+
+    private final Convertor convertor = new Convertor();
     private final ObservableList observableList = FXCollections.observableArrayList();
 
     public ComboBox cmbRoomType;
@@ -121,17 +127,8 @@ public class ReservationFormController {
     }
 
     private void generateReservationId() {
-        try {
-            ArrayList<ReservationDTO> allReservation = reservationService.getAllReservation();
-            if (allReservation.size()!=0){
-                lblReservationId.setText(String.valueOf(allReservation.size()+1));
-            }else {
-                lblReservationId.setText("1");
-            }
-
-        } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        String s = reservationService.GenerateReservationId();
+        lblReservationId.setText(s);
     }
 
     private void loadStudentId() {
@@ -174,43 +171,45 @@ public class ReservationFormController {
 
 
     public void btnAddOnAction(ActionEvent actionEvent) {
+
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+
         String reservation_id = lblReservationId.getText();
         LocalDate date = LocalDate.parse(lblDate.getText());
 
 
         String student_id = cmbStudentId.getSelectionModel().getSelectedItem().toString();
-        String student_name = txtName.getText();
-        String address = txtAddress.getText();
-        String contact = txtContactNo.getText();
 
 
         String room_id = cmbRoomId.getSelectionModel().getSelectedItem().toString();
-        String room_type = txtType.getText();
         String status = paymentStatus.getSelectionModel().getSelectedItem().toString();
 
-//
-//       // ReservationDTO reservationDTO = new ReservationDTO(reservation_id,date,new Student(student_id,student_name,address,contact), new Rooms(room_id,room_type,roo),status ,student_id);
-//        try {
-//         //   boolean b = reservationService.saveReservation(reservationDTO);
-//            if (true){
-////                boolean b1=false;
-////
-////                if (paymentStatus.getSelectionModel().getSelectedItem().toString().equals("Paid")){
-////                    double s = Double.parseDouble(txtStatus.getText());
-////                     b1= roomsService.reservationQtyUpdate(new RoomsDTO(lblRoomId.getText(), lblRoomType.getText(),s,1));
-////                }else{
-////                    b1 = roomsService.reservationQtyUpdate(new RoomsDTO(lblRoomId.getText(), lblRoomType.getText(),0,1));
-////                }
-//                    if (true){
-//                        new Alert(Alert.AlertType.CONFIRMATION, "Successfully Added !").show();
-//                        Navigation.navigate(Routes.RESERVATION,pane);
-//                    }else {
-//                        new Alert(Alert.AlertType.ERROR, "Added Fail!").show();
-//                    }
-//            }
-//        } catch (SQLException | ClassNotFoundException | IOException e) {
-//            throw new RuntimeException(e);
-//        }
+        try {
+            RoomsDTO roomsDTO = roomsService.searchRooms(room_id);
+            Rooms rooms = convertor.toRooms(roomsDTO);
+            rooms.setQyt(roomsDTO.getQty()-1);
+
+            StudentDTO studentDTO = studentService.searchStudent(student_id);
+            Student student = convertor.toStudent(studentDTO);
+
+            Reservation reservation = new Reservation();
+            reservation.setRes_id(reservation_id);
+            reservation.setDate(date);
+            reservation.setStatus(status);
+            reservation.setRoom(rooms);
+            reservation.setStudent(student);
+
+            session.save(reservation);
+            session.update(rooms);
+            transaction.commit();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void btnSearchOnAction(ActionEvent actionEvent) {

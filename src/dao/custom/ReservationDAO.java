@@ -4,6 +4,6 @@ import dao.CrudDAO;
 import dto.ReservationDTO;
 import entity.Reservation;
 
-public interface ReservationDAO extends CrudDAO<ReservationDTO,String> {
-
+public interface ReservationDAO extends CrudDAO<Reservation,String> {
+    String GenerateReservationId();
 }

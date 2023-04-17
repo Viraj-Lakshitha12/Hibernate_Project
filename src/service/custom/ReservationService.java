@@ -13,4 +13,6 @@ public interface ReservationService{
     boolean deleteReservation(String id) throws SQLException, ClassNotFoundException;
     ReservationDTO searchReservation(String id) throws SQLException, ClassNotFoundException;
     ArrayList<ReservationDTO> getAllReservation() throws SQLException, ClassNotFoundException;
+
+    String GenerateReservationId();
 }
