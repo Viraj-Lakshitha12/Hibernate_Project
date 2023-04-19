@@ -28,6 +28,11 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
+    public boolean updateUsingId(String id, String status) {
+        return reservationDAO.updateUsingId(id,status);
+    }
+
+    @Override
     public boolean saveReservation(ReservationDTO reservationDTO) throws SQLException, ClassNotFoundException {
         return reservationDAO.save(convertor.toReservation(reservationDTO));
     }
@@ -44,4 +49,6 @@ public class ReservationServiceImpl implements ReservationService {
 //        return reservationDAO.findByPk(id);
         return null;
     }
+
+
 }

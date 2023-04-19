@@ -39,6 +39,10 @@ public class Navigation {
                 window.setTitle("Login Form");
                 initUI("LoginPage.fxml");
                 break;
+            case KEY_MONEY:
+                window.setTitle("Key Money Form");
+                initUI("KeyMoneyDetails.fxml");
+                break;
             default:
                 new Alert(Alert.AlertType.ERROR, "UI Not Found!").show();
         }

@@ -67,6 +67,8 @@ public class UsersController {
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) {
+
+
         String id = txtUserId.getText();
         String name = txtName.getText();
         String email = txtEmail.getText();

@@ -15,4 +15,5 @@ public interface ReservationService{
     ArrayList<ReservationDTO> getAllReservation() throws SQLException, ClassNotFoundException;
 
     String GenerateReservationId();
+    boolean updateUsingId(String id, String status);
 }

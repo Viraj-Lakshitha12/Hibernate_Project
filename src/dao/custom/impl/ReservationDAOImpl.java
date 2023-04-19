@@ -111,4 +111,21 @@ public class ReservationDAOImpl implements ReservationDAO {
 
         return resultList.size()==0?"RS000":((Reservation)resultList.get(0)).getRes_id();
     }
+
+    @Override
+    public boolean updateUsingId(String id, String status) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        String hql = "UPDATE Reservation SET status = :s WHERE res_id = :id";
+        Query query = session.createQuery(hql);
+        query.setParameter("s",status );
+        query.setParameter("id", id);
+
+        int i = query.executeUpdate();
+
+        transaction.commit();
+        session.close();
+        return i>0;
+    }
 }

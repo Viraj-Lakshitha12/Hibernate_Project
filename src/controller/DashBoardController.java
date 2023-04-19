@@ -131,4 +131,8 @@ public class DashBoardController {
         stage2.setScene(scene);
         stage2.show();
     }
+
+    public void KeyMoneyOnClicked(MouseEvent event) throws IOException {
+        Navigation.navigate(Routes.KEY_MONEY,root);
+    }
 }

@@ -6,4 +6,5 @@ import entity.Reservation;
 
 public interface ReservationDAO extends CrudDAO<Reservation,String> {
     String GenerateReservationId();
+    boolean updateUsingId(String id,String status);
 }
