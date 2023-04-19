@@ -30,4 +30,9 @@ public class KeyMoneyServiceImpl implements KeyMoneyService {
     public boolean updateReservationUsingId(String id, String status) throws Exception {
         return reservationService.updateUsingId(id,status);
     }
+
+    @Override
+    public List findDetails(String id) {
+        return queryDAO.findDetails(id);
+    }
 }

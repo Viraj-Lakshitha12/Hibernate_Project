@@ -18,10 +18,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import service.custom.KeyMoneyService;
 import service.custom.impl.KeyMoneyServiceImpl;
+import util.Navigation;
+import util.Routes;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class KeyMoneyDetailsController {
     public int tblVIew;
@@ -48,6 +52,15 @@ public class KeyMoneyDetailsController {
     private final KeyMoneyService keyMoneyService = new KeyMoneyServiceImpl();
     public void initialize(){
         loadAllKeyMoneyDetails();
+        loadPaymentStatus();
+    }
+
+    private void loadPaymentStatus() {
+        ObservableList observableList1 = FXCollections.observableArrayList();
+        observableList1.add("Paid ");
+        observableList1.add("Paid Later");
+        cmbPaymentStatus.setItems(observableList1);
+
     }
 
     private void loadAllKeyMoneyDetails() {
@@ -88,10 +101,17 @@ public class KeyMoneyDetailsController {
             boolean b = keyMoneyService.updateReservationUsingId(txtReservationId.getText(), String.valueOf(cmbPaymentStatus.getValue()));
             if (b){
                 new Alert(Alert.AlertType.CONFIRMATION,"Updated").show();
+                Navigation.navigate(Routes.KEY_MONEY,pane);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public void txtReservationOnAction(ActionEvent actionEvent) {
+        String reservationId = txtReservationId.getText();
+        List details = keyMoneyService.findDetails(reservationId);
+        System.out.println(details.get(0));
     }
 }
