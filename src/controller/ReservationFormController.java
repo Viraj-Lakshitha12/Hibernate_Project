@@ -112,6 +112,7 @@ public class ReservationFormController {
         try {
             ArrayList<ReservationDTO> allReservation = reservationService.getAllReservation();
             ObservableList observableList1 = FXCollections.observableArrayList();
+
             for (ReservationDTO a :allReservation) {
                 observableList1.add(a);
                 tblView.setItems(observableList1);
@@ -127,8 +128,8 @@ public class ReservationFormController {
     }
 
     private void generateReservationId() {
-        String s = reservationService.GenerateReservationId();
-        lblReservationId.setText(s);
+        int s = Integer.parseInt(reservationService.GenerateReservationId());
+        lblReservationId.setText(String.valueOf(s+1));
     }
 
     private void loadStudentId() {
@@ -204,47 +205,16 @@ public class ReservationFormController {
             session.save(reservation);
             session.update(rooms);
             transaction.commit();
+            new Alert(Alert.AlertType.CONFIRMATION, "Successfully Added !").show();
+            Navigation.navigate(Routes.RESERVATION,pane);
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        } catch (SQLException | ClassNotFoundException | IOException e) {
+            new Alert(Alert.AlertType.CONFIRMATION, " Added Fail!").show();
         }
     }
 
     public void btnSearchOnAction(ActionEvent actionEvent) {
         txtReservationIDOnAction(actionEvent);
-    }
-
-    public void btnUpdateOnAction(ActionEvent actionEvent) {
-//        String reservation_id = lblReservationId.getText();
-//        LocalDate date = LocalDate.parse(lblDate.getText());
-//
-//
-//        String student_id = cmbStudentId.getSelectionModel().getSelectedItem().toString();
-//        String student_name = txtName.getText();
-//        String address = txtAddress.getText();
-//        String contact = txtContactNo.getText();
-//
-//
-//        String room_id = cmbRoomId.getSelectionModel().getSelectedItem().toString();
-//        String room_type = txtType.getText();
-//        String status = paymentStatus.getSelectionModel().getSelectedItem().toString();
-//
-//
-//        ReservationDTO reservationDTO = new ReservationDTO(reservation_id,date,student_id,room_id,room_type, status);
-//        try {
-//            boolean b = reservationService.updateReservation(reservationDTO);
-//            if (b){
-//                new Alert(Alert.AlertType.CONFIRMATION, "Successfully Update !").show();
-//                Navigation.navigate(Routes.RESERVATION,pane);
-//            }else {
-//                new Alert(Alert.AlertType.ERROR, "Added Fail!").show();
-//
-//            }
-//        } catch (SQLException | ClassNotFoundException | IOException e) {
-//            throw new RuntimeException(e);
-//        }
     }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
@@ -295,19 +265,6 @@ public class ReservationFormController {
 
 
     public void txtReservationIDOnAction(ActionEvent actionEvent) {
-//        String reservation_id = txtReservationId.getText();
-//        try {
-//            ReservationDTO reservationDTO = reservationService.searchReservation(reservation_id);
-//            if (reservationDTO!=null){
-//                lblRoomType.setText(reservationDTO.getRoom_type());
-//                txtStatus.setText(reservationDTO.getStatus());
-//                cmbStudentId.setAccessibleRoleDescription(reservationDTO.getStudent_id());
-//            }else{
-//                new Alert(Alert.AlertType.ERROR,"Not Found").show();
-//            }
-//
-//        } catch (SQLException | ClassNotFoundException e) {
-//            throw new RuntimeException(e);
-//        }
+
     }
 }

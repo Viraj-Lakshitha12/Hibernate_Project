@@ -44,21 +44,15 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <JFXButton layoutX="1582.0" layoutY="158.0" onAction="#btnAddOnAction" prefHeight="44.0" prefWidth="243.0" ripplerFill="WHITE" style="-fx-padding: 0;" styleClass="CrudButton" stylesheets="@../style/.css" text="Add" />
-            <JFXButton layoutX="1583.0" layoutY="227.0" onAction="#btnSearchOnAction" prefHeight="44.0" prefWidth="243.0" ripplerFill="RED" style="-fx-padding: 0;" styleClass="CrudButton" stylesheets="@../style/.css" text="Search" />
-            <JFXButton layoutX="1583.0" layoutY="300.0" onAction="#btnUpdateOnAction" prefHeight="44.0" prefWidth="243.0" ripplerFill="RED" style="-fx-padding: 0;" styleClass="CrudButton" stylesheets="@../style/.css" text="Update" />
+            <JFXButton layoutX="1582.0" layoutY="222.0" onAction="#btnAddOnAction" prefHeight="44.0" prefWidth="243.0" ripplerFill="WHITE" style="-fx-padding: 0;" styleClass="CrudButton" stylesheets="@../style/.css" text="Add" />
+            <JFXButton layoutX="1583.0" layoutY="294.0" onAction="#btnSearchOnAction" prefHeight="44.0" prefWidth="243.0" ripplerFill="RED" style="-fx-padding: 0;" styleClass="CrudButton" stylesheets="@../style/.css" text="Search" />
             <JFXButton layoutX="1583.0" layoutY="371.0" onAction="#btnDeleteOnAction" prefHeight="44.0" prefWidth="243.0" ripplerFill="RED" style="-fx-padding: 0;" styleClass="CrudButton" stylesheets="@../style/.css" text="Delete" />
-            <ImageView fitHeight="41.0" fitWidth="53.0" layoutX="1607.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="41.0" fitWidth="53.0" layoutX="1607.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assests/kindpng_2071513.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="41.0" fitWidth="53.0" layoutX="1607.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assests/update_user.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="41.0" fitWidth="53.0" layoutX="1606.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="41.0" fitWidth="53.0" layoutX="1606.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assests/research.png" />
                </image>

@@ -109,6 +109,6 @@ public class ReservationDAOImpl implements ReservationDAO {
         transaction.commit();
         session.close();
 
-        return resultList.size()==0?"1":(((Reservation)resultList.get(0)).getRes_id())+1;
+        return resultList.size()==0?"RS000":((Reservation)resultList.get(0)).getRes_id();
     }
 }

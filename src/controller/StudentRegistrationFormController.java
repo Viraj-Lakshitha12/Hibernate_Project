@@ -14,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import service.custom.StudentService;
 import service.custom.impl.StudentServiceImpl;
@@ -25,6 +26,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class StudentRegistrationFormController {
     public AnchorPane pane;
@@ -42,6 +44,12 @@ public class StudentRegistrationFormController {
     public TableColumn colBirthday;
     public TableColumn colGender;
 
+    private Pattern id;
+    private Pattern name;
+    private Pattern address;
+    private Pattern contactNo;
+    private Pattern dob;
+
     private final StudentService studentService = new StudentServiceImpl();
     private final ObservableList observableList = FXCollections.observableArrayList();
     public void btnBackOnAction(ActionEvent actionEvent) throws IOException {
@@ -57,6 +65,15 @@ public class StudentRegistrationFormController {
 
     public void initialize(){
         loadAllStudentDetails();
+        pattern();
+    }
+
+    private void pattern() {
+        id = Pattern.compile("^[S][0-9]{3,}$");
+        name = Pattern.compile("^[A-Za-z0-9]{3,}$");
+        address =  Pattern.compile("^[A-Za-z0-9]{3,}$");
+        contactNo = Pattern.compile("^[0-9]{10}$");
+        dob=Pattern.compile("^\\d{4}-\\d{2}-\\d{2}$\n");
     }
 
     private void loadAllStudentDetails() {
@@ -98,24 +115,58 @@ public class StudentRegistrationFormController {
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) {
-        String student_id = txtStudentId.getText();
-        String name=txtName.getText();
-        String address=txtAddress.getText();
-        String contact = txtContact.getText();
-        LocalDate dob = LocalDate.parse(txtBirthday.getText());
-        String gender=txtGender.getText();
+        boolean isStudentIdMatched = id.matcher(txtStudentId.getText()).matches();
+        boolean isStudentName = name.matcher(txtName.getText()).matches();
+        boolean isStudentAddress = address.matcher(txtAddress.getText()).matches();
+        boolean isStudentContact = contactNo.matcher(txtContact.getText()).matches();
+        boolean  isStudentDob= contactNo.matcher(txtBirthday.getText()).matches();
 
-        try {
-            boolean b = studentService.saveStudent(new StudentDTO(student_id, name, address, contact, dob, gender));
-            if (b){
-                new Alert(Alert.AlertType.CONFIRMATION, "Successfully Added Student !").show();
-                Navigation.navigate(Routes.STUDENT_REGISTRATION,pane);
+        if (isStudentIdMatched){
+            if (isStudentName){
+                if (isStudentAddress){
+                    if (isStudentContact){
+                        if (isStudentDob){
+
+                            String student_id = txtStudentId.getText();
+                            String name=txtName.getText();
+                            String address=txtAddress.getText();
+                            String contact = txtContact.getText();
+                            LocalDate dob = LocalDate.parse(txtBirthday.getText());
+                            String gender=txtGender.getText();
+
+                            try {
+                                boolean b = studentService.saveStudent(new StudentDTO(student_id, name, address, contact, dob, gender));
+                                if (b){
+                                    new Alert(Alert.AlertType.CONFIRMATION, "Successfully Added Student !").show();
+                                    Navigation.navigate(Routes.STUDENT_REGISTRATION,pane);
+                                }else{
+                                    new Alert(Alert.AlertType.ERROR, " Added Fail !").show();
+                                }
+                            } catch (SQLException | ClassNotFoundException | IOException e) {
+                                throw new RuntimeException(e);
+                            }
+
+                        }else{
+                            txtBirthday.setFocusColor(Paint.valueOf("Red"));
+                            txtBirthday.requestFocus();
+                        }
+                    }else{
+                        txtContact.setFocusColor(Paint.valueOf("Red"));
+                        txtContact.requestFocus();
+                    }
+                }else{
+                    txtAddress.setFocusColor(Paint.valueOf("Red"));
+                    txtAddress.requestFocus();
+                }
             }else{
-                new Alert(Alert.AlertType.ERROR, " Added Fail !").show();
+                txtName.setFocusColor(Paint.valueOf("Red"));
+                txtName.requestFocus();
             }
-        } catch (SQLException | ClassNotFoundException | IOException e) {
-            throw new RuntimeException(e);
+        }else{
+            txtStudentId.setFocusColor(Paint.valueOf("Red"));
+            txtStudentId.requestFocus();
         }
+
     }
 
     public void btnSearchOnAction(ActionEvent actionEvent) {
