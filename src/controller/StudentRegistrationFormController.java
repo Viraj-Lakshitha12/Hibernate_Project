@@ -174,25 +174,59 @@ public class StudentRegistrationFormController {
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
-        String student_id = txtStudentId.getText();
-        String name=txtName.getText();
-        String address=txtAddress.getText();
-        String contact = txtContact.getText();
-        LocalDate dob = LocalDate.parse(txtBirthday.getText());
-        String gender=txtGender.getText();
 
-        try {
-            boolean b = studentService.updateStudent(new StudentDTO(student_id, name, address, contact, dob, gender));
-            if (b) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Successfully Updated Student !").show();
-                Navigation.navigate(Routes.STUDENT_REGISTRATION,pane);
+        boolean isStudentIdMatched = id.matcher(txtStudentId.getText()).matches();
+        boolean isStudentName = name.matcher(txtName.getText()).matches();
+        boolean isStudentAddress = address.matcher(txtAddress.getText()).matches();
+        boolean isStudentContact = contactNo.matcher(txtContact.getText()).matches();
+        boolean  isStudentDob= contactNo.matcher(txtBirthday.getText()).matches();
+
+        if (isStudentIdMatched){
+            if (isStudentName){
+                if (isStudentAddress){
+                    if (isStudentContact){
+                        if (isStudentDob){
+
+                            String student_id = txtStudentId.getText();
+                            String name=txtName.getText();
+                            String address=txtAddress.getText();
+                            String contact = txtContact.getText();
+                            LocalDate dob = LocalDate.parse(txtBirthday.getText());
+                            String gender=txtGender.getText();
+
+                            try {
+                                boolean b = studentService.updateStudent(new StudentDTO(student_id, name, address, contact, dob, gender));
+                                if (b) {
+                                    new Alert(Alert.AlertType.CONFIRMATION, "Successfully Updated Student !").show();
+                                    Navigation.navigate(Routes.STUDENT_REGISTRATION,pane);
+                                }else{
+                                    new Alert(Alert.AlertType.ERROR, "Unsuccessfully Updated Student !").show();
+                                }
+                            } catch (SQLException | ClassNotFoundException e) {
+                                new Alert(Alert.AlertType.ERROR, "Unsuccessfully Updated Student !").show();
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+
+                        }else{
+                            txtBirthday.setFocusColor(Paint.valueOf("Red"));
+                            txtBirthday.requestFocus();
+                        }
+                    }else{
+                        txtContact.setFocusColor(Paint.valueOf("Red"));
+                        txtContact.requestFocus();
+                    }
+                }else{
+                    txtAddress.setFocusColor(Paint.valueOf("Red"));
+                    txtAddress.requestFocus();
+                }
             }else{
-                new Alert(Alert.AlertType.ERROR, "Unsuccessfully Updated Student !").show();
+                txtName.setFocusColor(Paint.valueOf("Red"));
+                txtName.requestFocus();
             }
-            } catch (SQLException | ClassNotFoundException e) {
-            new Alert(Alert.AlertType.ERROR, "Unsuccessfully Updated Student !").show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        }else{
+            txtStudentId.setFocusColor(Paint.valueOf("Red"));
+            txtStudentId.requestFocus();
         }
     }
 

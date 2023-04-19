@@ -13,16 +13,19 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import service.custom.RoomsService;
 import service.custom.impl.RoomsServiceImpl;
 import util.Navigation;
 import util.Routes;
 
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class ManageRoomsController {
     public AnchorPane pane;
@@ -36,12 +39,25 @@ public class ManageRoomsController {
     public TableColumn colKeyMoney;
     public TableColumn ColAvailableQty;
 
+    private Pattern room_id;
+    private Pattern keyMoney;
+    private Pattern qty;
+    private Pattern room_type;
+
     private final RoomsService roomsService=new RoomsServiceImpl();
     private final ObservableList observableList = FXCollections.observableArrayList();
     public TableColumn colQty;
 
     public void initialize(){
         loadAllRoomDetails();
+        pattern();
+    }
+
+    private void pattern() {
+        room_id = Pattern.compile("^[R][M][-][0-9]{3,}$");
+        keyMoney = Pattern.compile("^\\d+(\\.\\d+)?$");
+        qty =  Pattern.compile("^[0-9]{1,}$");
+        room_type = Pattern.compile("^[A-Za-z]{2,}$");
     }
 
     private void loadAllRoomDetails() {
@@ -74,25 +90,50 @@ public class ManageRoomsController {
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) {
-        String room_id = txtRoomId.getText();
-        String room_type= txtRoomType.getText();
-        double key_money = Double.parseDouble(txtKeyMoney.getText());
-        int qty = Integer.parseInt(txtQty.getText());
+        boolean isRoomIdMatched = room_id.matcher(txtRoomId.getText()).matches();
+        boolean isKeyMoneyMatched = keyMoney.matcher(txtKeyMoney.getText()).matches();
+        boolean isQtyMatched = qty.matcher(txtQty.getText()).matches();
+        boolean isRoomTypeMatched = room_type.matcher(txtRoomType.getText()).matches();
 
-        try {
-            boolean b = roomsService.saveRooms(new RoomsDTO(room_id, room_type, key_money, qty));
-            if (b){
-                new Alert(Alert.AlertType.CONFIRMATION, "Successfully Added !").show();
-                Navigation.navigate(Routes.MANAGE_ROOMS,pane);
+        if (isRoomIdMatched){
+            if (isKeyMoneyMatched){
+                if (isQtyMatched){
+                    if (isRoomTypeMatched){
+
+                        String room_id = txtRoomId.getText();
+                        String room_type= txtRoomType.getText();
+                        double key_money = Double.parseDouble(txtKeyMoney.getText());
+                        int qty = Integer.parseInt(txtQty.getText());
+
+                        try {
+                            boolean b = roomsService.saveRooms(new RoomsDTO(room_id, room_type, key_money, qty));
+                            if (b){
+                                new Alert(Alert.AlertType.CONFIRMATION, "Successfully Added !").show();
+                                Navigation.navigate(Routes.MANAGE_ROOMS,pane);
+                            }else{
+                                new Alert(Alert.AlertType.CONFIRMATION, "Added  Fail!").show();
+                            }
+
+                        } catch (SQLException | ClassNotFoundException | IOException e) {
+                            throw new RuntimeException(e);
+                        }
+
+                    }else{
+                        txtRoomType.setFocusColor(Paint.valueOf("Red"));
+                        txtRoomType.requestFocus();
+                    }
+                }else{
+                    txtQty.setFocusColor(Paint.valueOf("Red"));
+                    txtQty.requestFocus();
+                }
             }else{
-                new Alert(Alert.AlertType.CONFIRMATION, "Added  Fail!").show();
-
+                txtKeyMoney.setFocusColor(Paint.valueOf("Red"));
+                txtKeyMoney.requestFocus();
             }
-
-        } catch (SQLException | ClassNotFoundException | IOException e) {
-            throw new RuntimeException(e);
+        }else{
+            txtRoomId.setFocusColor(Paint.valueOf("Red"));
+            txtRoomId.requestFocus();
         }
-
     }
 
     public void btnSearchOnAction(ActionEvent actionEvent) {
@@ -113,23 +154,52 @@ public class ManageRoomsController {
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
-        String room_id = txtRoomId.getText();
-        String room_type= txtRoomType.getText();
-        double key_money = Double.parseDouble(txtKeyMoney.getText());
-        int qty = Integer.parseInt(txtQty.getText());
 
-        try {
-            boolean b = roomsService.updateRooms(new RoomsDTO(room_id, room_type, key_money, qty));
-            if (b){
-                new Alert(Alert.AlertType.CONFIRMATION, "Successfully Update !").show();
-                Navigation.navigate(Routes.MANAGE_ROOMS,pane);
+        boolean isRoomIdMatched = room_id.matcher(txtRoomId.getText()).matches();
+        boolean isKeyMoneyMatched = keyMoney.matcher(txtKeyMoney.getText()).matches();
+        boolean isQtyMatched = qty.matcher(txtQty.getText()).matches();
+        boolean isRoomTypeMatched = room_type.matcher(txtRoomType.getText()).matches();
 
+        if (isRoomIdMatched){
+            if (isKeyMoneyMatched){
+                if (isQtyMatched){
+                    if (isRoomTypeMatched){
+
+                        String room_id = txtRoomId.getText();
+                        String room_type= txtRoomType.getText();
+                        double key_money = Double.parseDouble(txtKeyMoney.getText());
+                        int qty = Integer.parseInt(txtQty.getText());
+
+                        try {
+                            boolean b = roomsService.updateRooms(new RoomsDTO(room_id, room_type, key_money, qty));
+                            if (b){
+                                new Alert(Alert.AlertType.CONFIRMATION, "Successfully Update !").show();
+                                Navigation.navigate(Routes.MANAGE_ROOMS,pane);
+
+                            }else{
+                                new Alert(Alert.AlertType.CONFIRMATION, "update  Fail!").show();
+
+                            }
+                        } catch (SQLException | ClassNotFoundException | IOException e) {
+                            throw new RuntimeException(e);
+                        }
+
+
+                    }else{
+                        txtRoomType.setFocusColor(Paint.valueOf("Red"));
+                        txtRoomType.requestFocus();
+                    }
+                }else{
+                    txtQty.setFocusColor(Paint.valueOf("Red"));
+                    txtQty.requestFocus();
+                }
             }else{
-                new Alert(Alert.AlertType.CONFIRMATION, "update  Fail!").show();
-
+                txtKeyMoney.setFocusColor(Paint.valueOf("Red"));
+                txtKeyMoney.requestFocus();
             }
-        } catch (SQLException | ClassNotFoundException | IOException e) {
-            throw new RuntimeException(e);
+        }else{
+            txtRoomId.setFocusColor(Paint.valueOf("Red"));
+            txtRoomId.requestFocus();
         }
     }
 
